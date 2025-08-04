@@ -28,7 +28,27 @@ impl DefaultMatcher {
         Self {
             match_method: true,
             match_url: true,
-            match_headers: Vec::new(),
+            // By default, match common headers including cookies - this is the correct behavior
+            match_headers: vec![
+                "authorization".to_string(),
+                "cookie".to_string(),
+                "content-type".to_string(),
+                "user-agent".to_string(),
+            ],
+            match_body: false,
+        }
+    }
+
+    /// Create a matcher that ignores cookies - useful for tests where cookies change
+    pub fn without_cookies() -> Self {
+        Self {
+            match_method: true,
+            match_url: true,
+            match_headers: vec![
+                "authorization".to_string(),
+                "content-type".to_string(),
+                "user-agent".to_string(),
+            ],
             match_body: false,
         }
     }

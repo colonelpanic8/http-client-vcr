@@ -1,3 +1,4 @@
+use crate::form_data::{analyze_form_data, filter_form_data};
 use crate::serializable::{SerializableRequest, SerializableResponse};
 use regex::Regex;
 use serde_json::{Map, Value};
@@ -194,11 +195,17 @@ impl BodyFilter {
     fn filter_body(&self, body: &mut Option<String>) {
         if let Some(body_str) = body {
             if let Ok(mut json_value) = serde_json::from_str::<Value>(body_str) {
+                // Handle JSON body
                 self.filter_json_value(&mut json_value);
                 if let Ok(filtered_json) = serde_json::to_string(&json_value) {
                     *body_str = filtered_json;
                 }
+            } else if body_str.contains('=') && body_str.contains('&') {
+                // Handle form-encoded body with smart form data parsing
+                let filtered = filter_form_data(body_str, "[FILTERED]");
+                *body_str = filtered;
             } else {
+                // Handle other text formats with regex
                 for (regex, replacement) in &self.regex_replacements {
                     *body_str = regex.replace_all(body_str, replacement).to_string();
                 }
@@ -291,6 +298,67 @@ impl Filter for UrlFilter {
 }
 
 impl Default for UrlFilter {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+#[derive(Debug)]
+pub struct SmartFormFilter {
+    replacement_pattern: String,
+    verbose: bool,
+}
+
+impl SmartFormFilter {
+    pub fn new() -> Self {
+        Self {
+            replacement_pattern: "[FILTERED]".to_string(),
+            verbose: false,
+        }
+    }
+
+    pub fn with_replacement_pattern(mut self, pattern: impl Into<String>) -> Self {
+        self.replacement_pattern = pattern.into();
+        self
+    }
+
+    pub fn verbose(mut self) -> Self {
+        self.verbose = true;
+        self
+    }
+
+    fn filter_form_body(&self, body: &mut Option<String>) {
+        if let Some(body_str) = body {
+            // Check if this looks like form data
+            if body_str.contains('=') && (body_str.contains('&') || !body_str.contains(' ')) {
+                if self.verbose {
+                    println!("🔍 Analyzing form data in request body...");
+                    let analysis = analyze_form_data(body_str);
+                    analysis.print_summary();
+                }
+
+                let filtered = filter_form_data(body_str, &self.replacement_pattern);
+                *body_str = filtered;
+
+                if self.verbose {
+                    println!("✅ Form data filtered");
+                }
+            }
+        }
+    }
+}
+
+impl Filter for SmartFormFilter {
+    fn filter_request(&self, request: &mut SerializableRequest) {
+        self.filter_form_body(&mut request.body);
+    }
+
+    fn filter_response(&self, _response: &mut SerializableResponse) {
+        // Form filtering only applies to request bodies typically
+    }
+}
+
+impl Default for SmartFormFilter {
     fn default() -> Self {
         Self::new()
     }
