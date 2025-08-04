@@ -14,6 +14,8 @@ pub struct Cassette {
     pub interactions: Vec<Interaction>,
     #[serde(skip)]
     pub path: Option<PathBuf>,
+    #[serde(skip)]
+    pub modified_since_load: bool,
 }
 
 impl Cassette {
@@ -21,6 +23,7 @@ impl Cassette {
         Self {
             interactions: Vec::new(),
             path: None,
+            modified_since_load: false,
         }
     }
 
@@ -37,6 +40,7 @@ impl Cassette {
             .map_err(|e| Error::from_str(500, format!("Failed to parse cassette YAML: {e}")))?;
 
         cassette.path = Some(path);
+        cassette.modified_since_load = false; // Just loaded, not modified yet
 
         Ok(cassette)
     }
@@ -76,6 +80,7 @@ impl Cassette {
         };
 
         self.interactions.push(interaction);
+        self.modified_since_load = true; // Mark as modified when recording new interactions
         Ok(())
     }
 

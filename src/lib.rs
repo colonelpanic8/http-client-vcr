@@ -157,7 +157,7 @@ impl VcrClient {
             self.filter_chain.filter_response(&mut interaction.response);
         }
 
-        println!(
+        log::debug!(
             "Applied filters to {} interactions",
             cassette.interactions.len()
         );
@@ -324,7 +324,7 @@ pub async fn filter_cassette_file<P: Into<PathBuf>>(
     // Save the filtered cassette
     cassette.save_to_file().await?;
 
-    println!(
+    log::debug!(
         "Applied filters to {} interactions in {path:?}",
         cassette.interactions.len()
     );
@@ -346,7 +346,7 @@ where
     }
 
     cassette.save_to_file().await?;
-    println!(
+    log::debug!(
         "Applied custom mutations to {} requests in {path:?}",
         cassette.interactions.len()
     );
@@ -367,7 +367,7 @@ where
     }
 
     cassette.save_to_file().await?;
-    println!(
+    log::debug!(
         "Applied custom mutations to {} responses in {path:?}",
         cassette.interactions.len()
     );
@@ -394,7 +394,7 @@ where
     }
 
     cassette.save_to_file().await?;
-    println!(
+    log::debug!(
         "Applied custom mutations to {} interactions in {path:?}",
         cassette.interactions.len()
     );
@@ -556,13 +556,13 @@ pub async fn sanitize_cassette_for_sharing<P: Into<PathBuf>>(
 ) -> Result<(), Error> {
     let path = cassette_path.into();
 
-    println!("🧹 Sanitizing cassette for sharing: {path:?}");
+    log::debug!("🧹 Sanitizing cassette for sharing: {path:?}");
 
     // First analyze what we're dealing with
     let analysis = analyze_cassette_file(&path).await?;
     analysis.print_report();
 
-    println!("\n🔧 Applying sanitization...");
+    log::debug!("\n🔧 Applying sanitization...");
 
     // Apply comprehensive cleaning
     mutate_all_interactions(
@@ -608,8 +608,8 @@ pub async fn sanitize_cassette_for_sharing<P: Into<PathBuf>>(
     )
     .await?;
 
-    println!("✅ Cassette sanitized successfully!");
-    println!("🔒 All credentials, session data, and sensitive headers have been removed");
+    log::debug!("✅ Cassette sanitized successfully!");
+    log::debug!("🔒 All credentials, session data, and sensitive headers have been removed");
 
     Ok(())
 }
@@ -685,7 +685,7 @@ pub async fn set_test_password_in_cassette<P: Into<PathBuf>>(
     let path = cassette_path.into();
     let password = test_password.to_string();
 
-    println!("🔑 Setting test password in cassette: {path:?}");
+    log::debug!("🔑 Setting test password in cassette: {path:?}");
 
     mutate_all_requests(&path, move |request| {
         if let Some(body) = &mut request.body {
@@ -701,7 +701,7 @@ pub async fn set_test_password_in_cassette<P: Into<PathBuf>>(
     })
     .await?;
 
-    println!("✅ Test password set in cassette");
+    log::debug!("✅ Test password set in cassette");
     Ok(())
 }
 
@@ -748,30 +748,30 @@ pub struct CassetteAnalysis {
 impl CassetteAnalysis {
     /// Print a detailed analysis report
     pub fn print_report(&self) {
-        println!("📊 Cassette Analysis Report");
-        println!("=====================================");
-        println!("File: {:?}", self.file_path);
-        println!("Total interactions: {}", self.total_interactions);
-        println!();
+        log::debug!("📊 Cassette Analysis Report");
+        log::debug!("=====================================");
+        log::debug!("File: {:?}", self.file_path);
+        log::debug!("Total interactions: {}", self.total_interactions);
+        log::debug!("");
 
         if !self.requests_with_form_data.is_empty() {
-            println!(
+            log::debug!(
                 "🔍 Interactions with form data: {}",
                 self.requests_with_form_data.len()
             );
             for idx in &self.requests_with_form_data {
-                println!("  - Interaction #{idx}");
+                log::debug!("  - Interaction #{idx}");
             }
-            println!();
+            log::debug!("");
         }
 
         if !self.requests_with_credentials.is_empty() {
-            println!(
+            log::debug!(
                 "🔐 Interactions containing credentials: {}",
                 self.requests_with_credentials.len()
             );
             for (idx, credentials) in &self.requests_with_credentials {
-                println!(
+                log::debug!(
                     "  - Interaction #{}: {} credential fields",
                     idx,
                     credentials.len()
@@ -782,40 +782,42 @@ impl CassetteAnalysis {
                     } else {
                         value.clone()
                     };
-                    println!("    * {key}: {preview}");
+                    log::debug!("    * {key}: {preview}");
                 }
             }
-            println!();
+            log::debug!("");
         }
 
         if !self.sensitive_headers.is_empty() {
-            println!(
+            log::debug!(
                 "🏷️  Interactions with sensitive headers: {}",
                 self.sensitive_headers.len()
             );
             for (idx, header_name, header_values) in &self.sensitive_headers {
-                println!("  - Interaction #{idx}: {header_name} header");
+                log::debug!("  - Interaction #{idx}: {header_name} header");
                 for value in header_values {
                     let preview = if value.len() > 50 {
                         format!("{}...", &value[..50])
                     } else {
                         value.clone()
                     };
-                    println!("    * {preview}");
+                    log::debug!("    * {preview}");
                 }
             }
-            println!();
+            log::debug!("");
         }
 
-        println!("💡 Recommendations:");
+        log::debug!("💡 Recommendations:");
         if !self.requests_with_credentials.is_empty() {
-            println!("  - Use SmartFormFilter to automatically detect and filter form credentials");
+            log::debug!(
+                "  - Use SmartFormFilter to automatically detect and filter form credentials"
+            );
         }
         if !self.sensitive_headers.is_empty() {
-            println!("  - Use HeaderFilter to filter sensitive headers like cookies and tokens");
+            log::debug!("  - Use HeaderFilter to filter sensitive headers like cookies and tokens");
         }
         if self.requests_with_form_data.is_empty() && self.sensitive_headers.is_empty() {
-            println!("  - No obvious sensitive data detected, but consider reviewing manually");
+            log::debug!("  - No obvious sensitive data detected, but consider reviewing manually");
         }
     }
 }
@@ -891,19 +893,32 @@ impl VcrClientBuilder {
 impl Drop for VcrClient {
     fn drop(&mut self) {
         if let Ok(cassette) = self.cassette.try_lock() {
-            println!(
-                "VcrClient dropped - trying to save cassette with {} interactions",
-                cassette.interactions.len()
-            );
-            // Try to save synchronously if possible
-            if let Some(path) = &cassette.path {
-                if let Ok(yaml) = serde_yaml::to_string(&*cassette) {
-                    if let Err(e) = std::fs::write(path, yaml) {
-                        eprintln!("Failed to save cassette on drop: {e}");
-                    } else {
-                        println!("Successfully saved cassette to {path:?}");
+            // Only save if:
+            // 1. We're in a mode that should persist changes (Record or Once)
+            // 2. The cassette was actually modified since loading
+            let should_save = matches!(self.mode, VcrMode::Record | VcrMode::Once)
+                && cassette.modified_since_load;
+
+            if should_save {
+                log::debug!(
+                    "VcrClient dropped - saving modified cassette with {} interactions",
+                    cassette.interactions.len()
+                );
+                // Try to save synchronously if possible
+                if let Some(path) = &cassette.path {
+                    if let Ok(yaml) = serde_yaml::to_string(&*cassette) {
+                        if let Err(e) = std::fs::write(path, yaml) {
+                            eprintln!("Failed to save cassette on drop: {e}");
+                        } else {
+                            log::debug!("Successfully saved cassette to {path:?}");
+                        }
                     }
                 }
+            } else if cassette.modified_since_load {
+                log::debug!(
+                    "VcrClient dropped - not saving cassette (mode: {:?} doesn't persist changes)",
+                    self.mode
+                );
             }
         }
     }

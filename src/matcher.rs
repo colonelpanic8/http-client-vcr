@@ -76,33 +76,74 @@ impl DefaultMatcher {
 
 impl RequestMatcher for DefaultMatcher {
     fn matches(&self, request: &Request, recorded_request: &SerializableRequest) -> bool {
+        log::debug!(
+            "Matching request: {} {} against recorded: {} {}",
+            request.method(),
+            request.url(),
+            recorded_request.method,
+            recorded_request.url
+        );
+
         if self.match_method && request.method().to_string() != recorded_request.method {
+            log::debug!(
+                "Method mismatch: {} != {}",
+                request.method(),
+                recorded_request.method
+            );
             return false;
         }
 
         if self.match_url && request.url().to_string() != recorded_request.url {
+            log::debug!(
+                "URL mismatch: {} != {}",
+                request.url(),
+                recorded_request.url
+            );
             return false;
         }
 
         if !self.match_headers.is_empty() {
+            log::debug!("Checking {} headers for matching", self.match_headers.len());
             for header_name in &self.match_headers {
                 let request_header = request.header(header_name.as_str());
                 let recorded_header = recorded_request.headers.get(header_name);
+
+                log::debug!(
+                    "Comparing header '{}': request={:?}, recorded={:?}",
+                    header_name,
+                    request_header.map(|v| v.iter().map(|h| h.as_str()).collect::<Vec<_>>()),
+                    recorded_header
+                );
 
                 match (request_header, recorded_header) {
                     (Some(req_val), Some(rec_val)) => {
                         let req_values: Vec<String> =
                             req_val.iter().map(|v| v.as_str().to_string()).collect();
                         if &req_values != rec_val {
+                            log::debug!(
+                                "Header '{}' values mismatch: request={:?} != recorded={:?}",
+                                header_name,
+                                req_values,
+                                rec_val
+                            );
                             return false;
+                        } else {
+                            log::debug!("Header '{}' matched: {:?}", header_name, req_values);
                         }
                     }
-                    (None, None) => {}
-                    _ => return false,
+                    (None, None) => {
+                        log::debug!("Header '{}' both absent (matched)", header_name);
+                    }
+                    _ => {
+                        log::debug!("Header '{}' presence mismatch: request present={}, recorded present={}", 
+                                   header_name, request_header.is_some(), recorded_header.is_some());
+                        return false;
+                    }
                 }
             }
         }
 
+        log::debug!("Request matched successfully");
         true
     }
 
