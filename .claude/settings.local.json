@@ -5,7 +5,10 @@
       "Bash(cargo:*)",
       "Bash(just checks)",
       "Bash(rg:*)",
-      "Bash(tokei:*)"
+      "Bash(tokei:*)",
+      "Bash(rustc:*)",
+      "Bash(./test_record_replacement)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }

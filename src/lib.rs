@@ -40,6 +40,7 @@ pub struct VcrClient {
     mode: VcrMode,
     matcher: Box<dyn RequestMatcher>,
     filter_chain: FilterChain,
+    recording_started: Arc<Mutex<bool>>,
 }
 
 /// Duplicate a request while preserving the body.
@@ -75,6 +76,7 @@ impl VcrClient {
             mode,
             matcher: Box::new(DefaultMatcher::new()),
             filter_chain: FilterChain::new(),
+            recording_started: Arc::new(Mutex::new(false)),
         }
     }
 
@@ -221,6 +223,16 @@ impl VcrClient {
             .filter_response(&mut serializable_response);
 
         let mut cassette = self.cassette.lock().await;
+
+        // In Record mode, clear cassette on first interaction to fully replace
+        if matches!(self.mode, VcrMode::Record) {
+            let mut recording_started = self.recording_started.lock().await;
+            if !*recording_started {
+                cassette.clear();
+                *recording_started = true;
+            }
+        }
+
         cassette
             .record_interaction(serializable_request, serializable_response)
             .await?;

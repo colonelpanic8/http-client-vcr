@@ -61,6 +61,10 @@ impl Cassette {
         }
     }
 
+    pub fn clear(&mut self) {
+        self.interactions.clear();
+    }
+
     pub async fn record_interaction(
         &mut self,
         serializable_request: SerializableRequest,
