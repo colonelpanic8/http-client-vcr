@@ -4,7 +4,8 @@
       "Bash(cargo check:*)",
       "Bash(cargo:*)",
       "Bash(just checks)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(tokei:*)"
     ],
     "deny": []
   }

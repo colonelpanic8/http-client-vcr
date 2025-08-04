@@ -17,9 +17,8 @@ use http_client::{Config, Error, HttpClient, Request, Response};
 /// # #[tokio::main]
 /// # async fn main() -> Result<(), Box<dyn std::error::Error>> {
 /// // Ensure no real HTTP requests can be made
-/// let vcr_client = VcrClient::builder()
+/// let vcr_client = VcrClient::builder("fixtures/test.yaml")
 ///     .inner_client(Box::new(NoOpClient::new()))
-///     .cassette_path("fixtures/test.yaml")
 ///     .mode(VcrMode::Replay) // Only replay from cassette
 ///     .build()
 ///     .await?;

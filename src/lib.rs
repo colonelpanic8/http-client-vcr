@@ -36,7 +36,7 @@ pub enum VcrMode {
 #[derive(Debug)]
 pub struct VcrClient {
     inner: Box<dyn HttpClient>,
-    cassette: Option<Arc<Mutex<Cassette>>>,
+    cassette: Arc<Mutex<Cassette>>,
     mode: VcrMode,
     matcher: Box<dyn RequestMatcher>,
     filter_chain: FilterChain,
@@ -55,7 +55,7 @@ async fn duplicate_request_with_body(mut req: Request) -> Result<(Request, Reque
         .take_body()
         .into_bytes()
         .await
-        .map_err(|e| Error::from_str(500, format!("Failed to read request body: {}", e)))?;
+        .map_err(|e| Error::from_str(500, format!("Failed to read request body: {e}")))?;
 
     // Clone the request (this gets everything except the body)
     let mut req_for_recording = req.clone();
@@ -68,19 +68,37 @@ async fn duplicate_request_with_body(mut req: Request) -> Result<(Request, Reque
 }
 
 impl VcrClient {
-    pub fn new(inner: Box<dyn HttpClient>, mode: VcrMode) -> Self {
+    pub fn new(inner: Box<dyn HttpClient>, mode: VcrMode, cassette: Cassette) -> Self {
         Self {
             inner,
-            cassette: None,
+            cassette: Arc::new(Mutex::new(cassette)),
             mode,
             matcher: Box::new(DefaultMatcher::new()),
             filter_chain: FilterChain::new(),
         }
     }
 
-    pub fn with_cassette(mut self, cassette: Cassette) -> Self {
-        self.cassette = Some(Arc::new(Mutex::new(cassette)));
-        self
+    /// Create a pristine response from extracted data, completely independent of VCR processing
+    fn create_pristine_response(
+        status: http_types::StatusCode,
+        headers: &std::collections::HashMap<String, Vec<String>>,
+        body_content: Option<&str>,
+    ) -> Response {
+        let mut return_response = http_types::Response::new(status);
+
+        // Copy all headers from the extracted header map
+        for (name, values) in headers {
+            for value in values {
+                let _ = return_response.append_header(name.as_str(), value.as_str());
+            }
+        }
+
+        // Set the body if we have content
+        if let Some(body) = body_content {
+            return_response.set_body(body);
+        }
+
+        return_response
     }
 
     pub fn set_mode(&mut self, mode: VcrMode) {
@@ -122,34 +140,26 @@ impl VcrClient {
     }
 
     pub async fn save_cassette(&self) -> Result<(), Error> {
-        if let Some(cassette) = &self.cassette {
-            let cassette = cassette.lock().await;
-            cassette.save_to_file().await
-        } else {
-            Ok(())
-        }
+        let cassette = self.cassette.lock().await;
+        cassette.save_to_file().await
     }
 
     /// Apply filters to all interactions in the cassette
     /// This modifies the cassette in-place by applying the configured filter chain to all interactions
     pub async fn apply_filters_to_cassette(&self) -> Result<(), Error> {
-        if let Some(cassette_arc) = &self.cassette {
-            let mut cassette = cassette_arc.lock().await;
+        let mut cassette = self.cassette.lock().await;
 
-            // Apply filters to each interaction
-            for interaction in &mut cassette.interactions {
-                self.filter_chain.filter_request(&mut interaction.request);
-                self.filter_chain.filter_response(&mut interaction.response);
-            }
-
-            println!(
-                "Applied filters to {} interactions",
-                cassette.interactions.len()
-            );
-            Ok(())
-        } else {
-            Err(Error::from_str(400, "No cassette loaded"))
+        // Apply filters to each interaction
+        for interaction in &mut cassette.interactions {
+            self.filter_chain.filter_request(&mut interaction.request);
+            self.filter_chain.filter_response(&mut interaction.response);
         }
+
+        println!(
+            "Applied filters to {} interactions",
+            cassette.interactions.len()
+        );
+        Ok(())
     }
 
     /// Apply filters to all interactions in the cassette and save the filtered version
@@ -158,8 +168,127 @@ impl VcrClient {
         self.save_cassette().await
     }
 
-    pub fn builder() -> VcrClientBuilder {
-        VcrClientBuilder::new()
+    pub fn builder<P: Into<PathBuf>>(cassette_path: P) -> VcrClientBuilder {
+        VcrClientBuilder::new(cassette_path)
+    }
+
+    // Helper methods for each VCR mode
+
+    /// Common logic for recording a request/response and returning the pristine response
+    async fn record_and_return_response(
+        &self,
+        req_for_recording: Request,
+        response: &mut Response,
+    ) -> Result<Response, Error> {
+        // IMMEDIATELY create a pristine copy for the caller before any VCR processing
+        let status = response.status();
+        let version = format!("{:?}", response.version());
+
+        let mut headers = std::collections::HashMap::new();
+        for (name, values) in response.iter() {
+            let header_values: Vec<String> =
+                values.iter().map(|v| v.as_str().to_string()).collect();
+            headers.insert(name.as_str().to_string(), header_values);
+        }
+
+        // Read the body once - this consumes it from the original response
+        let body_string = match response.body_string().await {
+            Ok(body) if !body.is_empty() => Some(body),
+            Ok(_) => None, // Empty body
+            Err(e) => {
+                // If we can't read the body, log it but don't fail the whole request
+                eprintln!("Warning: Failed to read response body for VCR: {e}");
+                None
+            }
+        };
+
+        // Create the pristine return response immediately, before any VCR processing
+        let return_response =
+            Self::create_pristine_response(status, &headers, body_string.as_deref());
+
+        // Now do VCR processing with the data we already extracted
+        let mut serializable_request = SerializableRequest::from_request(req_for_recording).await?;
+        let mut serializable_response = crate::SerializableResponse {
+            status: status.into(),
+            headers,
+            body: body_string.clone(),
+            version,
+        };
+
+        // Apply filters ONLY to what gets stored
+        self.filter_chain.filter_request(&mut serializable_request);
+        self.filter_chain
+            .filter_response(&mut serializable_response);
+
+        let mut cassette = self.cassette.lock().await;
+        cassette
+            .record_interaction(serializable_request, serializable_response)
+            .await?;
+
+        // Return the pristine response we created before any VCR processing
+        Ok(return_response)
+    }
+
+    async fn handle_none_mode(&self, req: Request) -> Result<Response, Error> {
+        self.inner.send(req).await
+    }
+
+    async fn handle_replay_mode(&self, req: Request) -> Result<Response, Error> {
+        let cassette = self.cassette.lock().await;
+        if let Some(interaction) = self.find_match(&req, &cassette).await {
+            Ok(interaction.response.to_response().await)
+        } else {
+            Err(Error::from_str(
+                404,
+                "No matching interaction found in cassette",
+            ))
+        }
+    }
+
+    async fn handle_record_mode(&self, req: Request) -> Result<Response, Error> {
+        // Duplicate the request to preserve the body for both sending and recording
+        let (req_for_sending, req_for_recording) = duplicate_request_with_body(req).await?;
+
+        // Make the real request with original sensitive data - never match existing interactions
+        let mut response = self.inner.send(req_for_sending).await?;
+        self.record_and_return_response(req_for_recording, &mut response)
+            .await
+    }
+
+    async fn handle_once_mode(&self, req: Request) -> Result<Response, Error> {
+        let cassette = self.cassette.lock().await;
+        if let Some(interaction) = self.find_match(&req, &cassette).await {
+            return Ok(interaction.response.to_response().await);
+        }
+
+        if !cassette.is_empty() {
+            return Err(Error::from_str(
+                404,
+                "No matching interaction found in cassette (Once mode)",
+            ));
+        }
+        drop(cassette); // Release the lock before making the request
+
+        // Duplicate the request to preserve the body for both sending and recording
+        let (req_for_sending, req_for_recording) = duplicate_request_with_body(req).await?;
+
+        // Make the real request with original sensitive data
+        let mut response = self.inner.send(req_for_sending).await?;
+        self.record_and_return_response(req_for_recording, &mut response)
+            .await
+    }
+
+    async fn handle_filter_mode(&self, req: Request) -> Result<Response, Error> {
+        let cassette = self.cassette.lock().await;
+        if let Some(interaction) = self.find_match(&req, &cassette).await {
+            // Return the filtered response (filters are already applied when loading)
+            Ok(interaction.response.to_response().await)
+        } else {
+            Err(Error::from_str(
+                404,
+                "No matching interaction found in cassette (Filter mode - no new requests allowed)",
+            ))
+        }
     }
 }
 
@@ -428,8 +557,6 @@ pub async fn sanitize_cassette_for_sharing<P: Into<PathBuf>>(
         &path,
         |request| {
             // Clean headers
-            request.headers.remove("cookie");
-            request.headers.remove("Cookie");
             request.headers.remove("authorization");
             request.headers.remove("Authorization");
 
@@ -442,7 +569,7 @@ pub async fn sanitize_cassette_for_sharing<P: Into<PathBuf>>(
 
             // Clean URLs of sensitive query params
             if let Ok(mut url) = url::Url::parse(&request.url) {
-                let sensitive_params = ["api_key", "token", "access_token", "key", "session"];
+                let sensitive_params = ["api_key", "access_token", "key"];
                 let query_pairs: Vec<(String, String)> = url
                     .query_pairs()
                     .filter(|(key, _)| !sensitive_params.contains(&key.as_ref()))
@@ -459,14 +586,11 @@ pub async fn sanitize_cassette_for_sharing<P: Into<PathBuf>>(
         },
         |response| {
             // Clean response headers
-            response.headers.remove("set-cookie");
-            response.headers.remove("Set-Cookie");
 
             // Clean sensitive data from response bodies
             if let Some(body) = &mut response.body {
                 // Simple replacements for common sensitive patterns
                 *body = body.replace(r#""sessionid":"[^"]*""#, r#""sessionid":"[SANITIZED]""#);
-                *body = body.replace(r#""csrftoken":"[^"]*""#, r#""csrftoken":"[SANITIZED]""#);
             }
         },
     )
@@ -688,17 +812,17 @@ impl CassetteAnalysis {
 pub struct VcrClientBuilder {
     inner: Option<Box<dyn HttpClient>>,
     mode: VcrMode,
-    cassette_path: Option<PathBuf>,
+    cassette_path: PathBuf,
     matcher: Option<Box<dyn RequestMatcher>>,
     filter_chain: FilterChain,
 }
 
 impl VcrClientBuilder {
-    pub fn new() -> Self {
+    pub fn new<P: Into<PathBuf>>(cassette_path: P) -> Self {
         Self {
             inner: None,
             mode: VcrMode::Once,
-            cassette_path: None,
+            cassette_path: cassette_path.into(),
             matcher: None,
             filter_chain: FilterChain::new(),
         }
@@ -711,11 +835,6 @@ impl VcrClientBuilder {
 
     pub fn mode(mut self, mode: VcrMode) -> Self {
         self.mode = mode;
-        self
-    }
-
-    pub fn cassette_path<P: Into<PathBuf>>(mut self, path: P) -> Self {
-        self.cassette_path = Some(path.into());
         self
     }
 
@@ -739,7 +858,13 @@ impl VcrClientBuilder {
             .inner
             .ok_or_else(|| Error::from_str(400, "Inner HttpClient is required"))?;
 
-        let mut vcr_client = VcrClient::new(inner, self.mode);
+        let cassette = if self.cassette_path.exists() {
+            Cassette::load_from_file(self.cassette_path.clone()).await?
+        } else {
+            Cassette::new().with_path(self.cassette_path)
+        };
+
+        let mut vcr_client = VcrClient::new(inner, self.mode, cassette);
 
         if let Some(matcher) = self.matcher {
             vcr_client.set_matcher(matcher);
@@ -747,42 +872,24 @@ impl VcrClientBuilder {
 
         vcr_client.set_filter_chain(self.filter_chain);
 
-        if let Some(path) = self.cassette_path {
-            let cassette = if path.exists() {
-                Cassette::load_from_file(path.clone()).await?
-            } else {
-                Cassette::new().with_path(path)
-            };
-
-            vcr_client = vcr_client.with_cassette(cassette);
-        }
-
         Ok(vcr_client)
-    }
-}
-
-impl Default for VcrClientBuilder {
-    fn default() -> Self {
-        Self::new()
     }
 }
 
 impl Drop for VcrClient {
     fn drop(&mut self) {
-        if let Some(cassette_arc) = &self.cassette {
-            if let Ok(cassette) = cassette_arc.try_lock() {
-                println!(
-                    "VcrClient dropped - trying to save cassette with {} interactions",
-                    cassette.interactions.len()
-                );
-                // Try to save synchronously if possible
-                if let Some(path) = &cassette.path {
-                    if let Ok(yaml) = serde_yaml::to_string(&*cassette) {
-                        if let Err(e) = std::fs::write(path, yaml) {
-                            eprintln!("Failed to save cassette on drop: {e}");
-                        } else {
-                            println!("Successfully saved cassette to {path:?}");
-                        }
+        if let Ok(cassette) = self.cassette.try_lock() {
+            println!(
+                "VcrClient dropped - trying to save cassette with {} interactions",
+                cassette.interactions.len()
+            );
+            // Try to save synchronously if possible
+            if let Some(path) = &cassette.path {
+                if let Ok(yaml) = serde_yaml::to_string(&*cassette) {
+                    if let Err(e) = std::fs::write(path, yaml) {
+                        eprintln!("Failed to save cassette on drop: {e}");
+                    } else {
+                        println!("Successfully saved cassette to {path:?}");
                     }
                 }
             }
@@ -794,187 +901,11 @@ impl Drop for VcrClient {
 impl HttpClient for VcrClient {
     async fn send(&self, req: Request) -> Result<Response, Error> {
         match &self.mode {
-            VcrMode::None => self.inner.send(req).await,
-            VcrMode::Replay => {
-                if let Some(cassette_arc) = &self.cassette {
-                    let cassette = cassette_arc.lock().await;
-                    if let Some(interaction) = self.find_match(&req, &cassette).await {
-                        return Ok(interaction.response.to_response().await);
-                    }
-                }
-                Err(Error::from_str(
-                    404,
-                    "No matching interaction found in cassette",
-                ))
-            }
-            VcrMode::Record => {
-                if let Some(cassette_arc) = &self.cassette {
-                    let cassette = cassette_arc.lock().await;
-                    if let Some(interaction) = self.find_match(&req, &cassette).await {
-                        return Ok(interaction.response.to_response().await);
-                    }
-                }
-
-                // Duplicate the request to preserve the body for both sending and recording
-                let (req_for_sending, req_for_recording) = duplicate_request_with_body(req).await?;
-
-                // Make the real request with original sensitive data
-                let mut response = self.inner.send(req_for_sending).await?;
-
-                // Store filtered copies in cassette
-                if let Some(cassette_arc) = &self.cassette {
-                    let mut serializable_request =
-                        SerializableRequest::from_request(req_for_recording).await?;
-
-                    // Read the response body once and share it
-                    let status = response.status();
-                    let version = format!("{:?}", response.version());
-
-                    let mut headers = std::collections::HashMap::new();
-                    for (name, values) in response.iter() {
-                        let header_values: Vec<String> =
-                            values.iter().map(|v| v.as_str().to_string()).collect();
-                        headers.insert(name.as_str().to_string(), header_values);
-                    }
-
-                    // Always try to read the body - response.len() may be None for gzipped content
-                    let body_string = match response.body_string().await {
-                        Ok(body) if !body.is_empty() => Some(body),
-                        Ok(_) => None, // Empty body
-                        Err(e) => {
-                            // If we can't read the body, log it but don't fail the whole request
-                            eprintln!("Warning: Failed to read response body for VCR: {e}");
-                            None
-                        }
-                    };
-
-                    // Create serializable response with the body we just read
-                    let mut serializable_response = crate::SerializableResponse {
-                        status: status.into(),
-                        headers,
-                        body: body_string.clone(),
-                        version,
-                    };
-
-                    // Apply filters ONLY to what gets stored
-                    self.filter_chain.filter_request(&mut serializable_request);
-                    self.filter_chain
-                        .filter_response(&mut serializable_response);
-
-                    let mut cassette = cassette_arc.lock().await;
-                    cassette
-                        .record_interaction(serializable_request, serializable_response)
-                        .await?;
-
-                    // Create a new response with the body we read to return to the caller
-                    let mut return_response = http_types::Response::new(status);
-                    for (name, values) in response.iter() {
-                        for value in values {
-                            let _ = return_response.append_header(name.as_str(), value.as_str());
-                        }
-                    }
-                    if let Some(body) = body_string {
-                        return_response.set_body(body);
-                    }
-
-                    return Ok(return_response);
-                }
-
-                // Return the original response if no cassette
-                Ok(response)
-            }
-            VcrMode::Once => {
-                if let Some(cassette_arc) = &self.cassette {
-                    let cassette = cassette_arc.lock().await;
-                    if let Some(interaction) = self.find_match(&req, &cassette).await {
-                        return Ok(interaction.response.to_response().await);
-                    }
-
-                    if !cassette.is_empty() {
-                        return Err(Error::from_str(
-                            404,
-                            "No matching interaction found in cassette (Once mode)",
-                        ));
-                    }
-                }
-
-                // Make the real request with original sensitive data
-                let mut response = self.inner.send(req.clone()).await?;
-
-                // Store filtered copies in cassette
-                if let Some(cassette_arc) = &self.cassette {
-                    let mut serializable_request = SerializableRequest::from_request(req).await?;
-
-                    // Read the response body once and share it
-                    let status = response.status();
-                    let version = format!("{:?}", response.version());
-
-                    let mut headers = std::collections::HashMap::new();
-                    for (name, values) in response.iter() {
-                        let header_values: Vec<String> =
-                            values.iter().map(|v| v.as_str().to_string()).collect();
-                        headers.insert(name.as_str().to_string(), header_values);
-                    }
-
-                    // Always try to read the body - response.len() may be None for gzipped content
-                    let body_string = match response.body_string().await {
-                        Ok(body) if !body.is_empty() => Some(body),
-                        Ok(_) => None, // Empty body
-                        Err(e) => {
-                            // If we can't read the body, log it but don't fail the whole request
-                            eprintln!("Warning: Failed to read response body for VCR: {e}");
-                            None
-                        }
-                    };
-
-                    // Create serializable response with the body we just read
-                    let mut serializable_response = crate::SerializableResponse {
-                        status: status.into(),
-                        headers,
-                        body: body_string.clone(),
-                        version,
-                    };
-
-                    // Apply filters ONLY to what gets stored
-                    self.filter_chain.filter_request(&mut serializable_request);
-                    self.filter_chain
-                        .filter_response(&mut serializable_response);
-
-                    let mut cassette = cassette_arc.lock().await;
-                    cassette
-                        .record_interaction(serializable_request, serializable_response)
-                        .await?;
-
-                    // Create a new response with the body we read to return to the caller
-                    let mut return_response = http_types::Response::new(status);
-                    for (name, values) in response.iter() {
-                        for value in values {
-                            let _ = return_response.append_header(name.as_str(), value.as_str());
-                        }
-                    }
-                    if let Some(body) = body_string {
-                        return_response.set_body(body);
-                    }
-
-                    return Ok(return_response);
-                }
-
-                // Return the original response if no cassette
-                Ok(response)
-            }
-            VcrMode::Filter => {
-                if let Some(cassette_arc) = &self.cassette {
-                    let cassette = cassette_arc.lock().await;
-                    if let Some(interaction) = self.find_match(&req, &cassette).await {
-                        // Return the filtered response (filters are already applied when loading)
-                        return Ok(interaction.response.to_response().await);
-                    }
-                }
-                Err(Error::from_str(
-                    404,
-                    "No matching interaction found in cassette (Filter mode - no new requests allowed)",
-                ))
-            }
+            VcrMode::None => self.handle_none_mode(req).await,
+            VcrMode::Replay => self.handle_replay_mode(req).await,
+            VcrMode::Record => self.handle_record_mode(req).await,
+            VcrMode::Once => self.handle_once_mode(req).await,
+            VcrMode::Filter => self.handle_filter_mode(req).await,
         }
     }
 

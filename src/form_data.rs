@@ -51,10 +51,6 @@ pub fn find_credential_fields(params: &HashMap<String, String>) -> Vec<(String, 
         "pwd",
         "secret",
         // Token/CSRF patterns
-        "token",
-        "csrf",
-        "csrftoken",
-        "csrfmiddlewaretoken",
         "_token",
         // Session patterns
         "session",
