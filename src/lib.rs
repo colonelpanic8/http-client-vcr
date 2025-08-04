@@ -42,6 +42,31 @@ pub struct VcrClient {
     filter_chain: FilterChain,
 }
 
+/// Duplicate a request while preserving the body.
+///
+/// Since Request::clone() sets the body to empty, this function properly
+/// duplicates a request by reading the body into memory and restoring it
+/// on both the original and cloned request.
+///
+/// Returns (request_for_sending, request_for_recording)
+async fn duplicate_request_with_body(mut req: Request) -> Result<(Request, Request), Error> {
+    // Read the body into bytes
+    let body_bytes = req
+        .take_body()
+        .into_bytes()
+        .await
+        .map_err(|e| Error::from_str(500, format!("Failed to read request body: {}", e)))?;
+
+    // Clone the request (this gets everything except the body)
+    let mut req_for_recording = req.clone();
+
+    // Set the body on both requests (this creates two independent Body instances)
+    req.set_body(body_bytes.clone());
+    req_for_recording.set_body(body_bytes);
+
+    Ok((req, req_for_recording))
+}
+
 impl VcrClient {
     pub fn new(inner: Box<dyn HttpClient>, mode: VcrMode) -> Self {
         Self {
@@ -790,12 +815,16 @@ impl HttpClient for VcrClient {
                     }
                 }
 
+                // Duplicate the request to preserve the body for both sending and recording
+                let (req_for_sending, req_for_recording) = duplicate_request_with_body(req).await?;
+
                 // Make the real request with original sensitive data
-                let mut response = self.inner.send(req.clone()).await?;
+                let mut response = self.inner.send(req_for_sending).await?;
 
                 // Store filtered copies in cassette
                 if let Some(cassette_arc) = &self.cassette {
-                    let mut serializable_request = SerializableRequest::from_request(req).await?;
+                    let mut serializable_request =
+                        SerializableRequest::from_request(req_for_recording).await?;
 
                     // Read the response body once and share it
                     let status = response.status();
