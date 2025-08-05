@@ -41,6 +41,8 @@ pub struct VcrClient {
     matcher: Box<dyn RequestMatcher>,
     filter_chain: FilterChain,
     recording_started: Arc<Mutex<bool>>,
+    // Track which interactions have been used in replay mode (by index)
+    used_interactions: Arc<Mutex<std::collections::HashSet<usize>>>,
 }
 
 /// Duplicate a request while preserving the body.
@@ -77,6 +79,7 @@ impl VcrClient {
             matcher: Box::new(DefaultMatcher::new()),
             filter_chain: FilterChain::new(),
             recording_started: Arc::new(Mutex::new(false)),
+            used_interactions: Arc::new(Mutex::new(std::collections::HashSet::new())),
         }
     }
 
@@ -241,21 +244,27 @@ impl VcrClient {
         &self,
         request: &Request,
         cassette: &'a Cassette,
-    ) -> Option<&'a Interaction> {
+    ) -> Option<(usize, &'a Interaction)> {
+        let used_interactions = self.used_interactions.lock().await;
+        
         // Create a filtered copy of the request for matching against stored filtered interactions
         if let Ok(mut filtered_request) = SerializableRequest::from_request(request.clone()).await {
             self.filter_chain.filter_request(&mut filtered_request);
 
-            cassette.interactions.iter().find(|interaction| {
-                self.matcher
-                    .matches_serializable(&filtered_request, &interaction.request)
+            cassette.interactions.iter().enumerate().find(|(index, interaction)| {
+                !used_interactions.contains(index) && 
+                self.matcher.matches_serializable(&filtered_request, &interaction.request)
             })
         } else {
             // Fallback to matching against stored interactions directly
             cassette
                 .interactions
                 .iter()
-                .find(|interaction| self.matcher.matches(request, &interaction.request))
+                .enumerate()
+                .find(|(index, interaction)| {
+                    !used_interactions.contains(index) && 
+                    self.matcher.matches(request, &interaction.request)
+                })
         }
     }
 
@@ -436,7 +445,16 @@ impl VcrClient {
 
     async fn handle_replay_mode(&self, req: Request) -> Result<Response, Error> {
         let cassette = self.cassette.lock().await;
-        if let Some(interaction) = self.find_match(&req, &cassette).await {
+        if let Some((index, _interaction)) = self.find_match(&req, &cassette).await {
+            // Mark this interaction as used
+            drop(cassette); // Release cassette lock before acquiring used_interactions lock
+            let mut used_interactions = self.used_interactions.lock().await;
+            used_interactions.insert(index);
+            drop(used_interactions); // Release used_interactions lock
+            
+            // Re-acquire cassette lock to access the interaction
+            let cassette = self.cassette.lock().await;
+            let interaction = &cassette.interactions[index];
             Ok(interaction.response.to_response().await)
         } else {
             drop(cassette); // Release the lock before calling generate_no_match_error
@@ -456,7 +474,16 @@ impl VcrClient {
 
     async fn handle_once_mode(&self, req: Request) -> Result<Response, Error> {
         let cassette = self.cassette.lock().await;
-        if let Some(interaction) = self.find_match(&req, &cassette).await {
+        if let Some((index, _interaction)) = self.find_match(&req, &cassette).await {
+            // Mark this interaction as used
+            drop(cassette); // Release cassette lock before acquiring used_interactions lock
+            let mut used_interactions = self.used_interactions.lock().await;
+            used_interactions.insert(index);
+            drop(used_interactions); // Release used_interactions lock
+            
+            // Re-acquire cassette lock to access the interaction
+            let cassette = self.cassette.lock().await;
+            let interaction = &cassette.interactions[index];
             return Ok(interaction.response.to_response().await);
         }
 
@@ -477,7 +504,16 @@ impl VcrClient {
 
     async fn handle_filter_mode(&self, req: Request) -> Result<Response, Error> {
         let cassette = self.cassette.lock().await;
-        if let Some(interaction) = self.find_match(&req, &cassette).await {
+        if let Some((index, _interaction)) = self.find_match(&req, &cassette).await {
+            // Mark this interaction as used
+            drop(cassette); // Release cassette lock before acquiring used_interactions lock
+            let mut used_interactions = self.used_interactions.lock().await;
+            used_interactions.insert(index);
+            drop(used_interactions); // Release used_interactions lock
+            
+            // Re-acquire cassette lock to access the interaction
+            let cassette = self.cassette.lock().await;
+            let interaction = &cassette.interactions[index];
             // Return the filtered response (filters are already applied when loading)
             Ok(interaction.response.to_response().await)
         } else {
