@@ -121,18 +121,15 @@ impl RequestMatcher for DefaultMatcher {
                             req_val.iter().map(|v| v.as_str().to_string()).collect();
                         if &req_values != rec_val {
                             log::debug!(
-                                "Header '{}' values mismatch: request={:?} != recorded={:?}",
-                                header_name,
-                                req_values,
-                                rec_val
+                                "Header '{header_name}' values mismatch: request={req_values:?} != recorded={rec_val:?}"
                             );
                             return false;
                         } else {
-                            log::debug!("Header '{}' matched: {:?}", header_name, req_values);
+                            log::debug!("Header '{header_name}' matched: {req_values:?}");
                         }
                     }
                     (None, None) => {
-                        log::debug!("Header '{}' both absent (matched)", header_name);
+                        log::debug!("Header '{header_name}' both absent (matched)");
                     }
                     _ => {
                         log::debug!("Header '{}' presence mismatch: request present={}, recorded present={}", 
