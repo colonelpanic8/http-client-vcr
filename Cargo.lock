@@ -573,6 +573,7 @@ name = "http-client-vcr"
 version = "0.1.0"
 dependencies = [
  "async-trait",
+ "base64",
  "http-client-2",
  "http-types-2",
  "log",

@@ -390,6 +390,7 @@ where
             status: 200,
             headers: HashMap::new(),
             body: None,
+            body_base64: None,
             version: "Http1_1".to_string(),
         };
         (self.filter_fn)(request, &mut dummy_response);
@@ -401,6 +402,7 @@ where
             url: "https://example.com".to_string(),
             headers: HashMap::new(),
             body: None,
+            body_base64: None,
             version: "Http1_1".to_string(),
         };
         (self.filter_fn)(&mut dummy_request, response);

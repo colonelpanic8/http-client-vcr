@@ -1,3 +1,4 @@
+use base64::{engine::general_purpose, Engine as _};
 use http_client::{Error, Request, Response};
 use http_types::{Method, StatusCode, Url};
 use serde::{Deserialize, Serialize};
@@ -8,7 +9,10 @@ pub struct SerializableRequest {
     pub method: String,
     pub url: String,
     pub headers: HashMap<String, Vec<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub body_base64: Option<String>,
     pub version: String,
 }
 
@@ -16,7 +20,10 @@ pub struct SerializableRequest {
 pub struct SerializableResponse {
     pub status: u16,
     pub headers: HashMap<String, Vec<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub body: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub body_base64: Option<String>,
     pub version: String,
 }
 
@@ -33,20 +40,28 @@ impl SerializableRequest {
             headers.insert(name.as_str().to_string(), header_values);
         }
 
-        let body =
-            if req.len().is_some() {
-                Some(req.body_string().await.map_err(|e| {
-                    Error::from_str(500, format!("Failed to read request body: {e}"))
-                })?)
+        let (body, body_base64) = if req.len().is_some() {
+            let body_string = req
+                .body_string()
+                .await
+                .map_err(|e| Error::from_str(500, format!("Failed to read request body: {e}")))?;
+
+            // Check if body contains binary/HTML content that should be base64 encoded
+            if Self::should_base64_encode(&body_string) {
+                (None, Some(general_purpose::STANDARD.encode(&body_string)))
             } else {
-                None
-            };
+                (Some(body_string), None)
+            }
+        } else {
+            (None, None)
+        };
 
         Ok(Self {
             method,
             url,
             headers,
             body,
+            body_base64,
             version,
         })
     }
@@ -72,9 +87,28 @@ impl SerializableRequest {
 
         if let Some(body) = &self.body {
             req.set_body(body.clone());
+        } else if let Some(body_base64) = &self.body_base64 {
+            let decoded = general_purpose::STANDARD
+                .decode(body_base64)
+                .map_err(|e| Error::from_str(500, format!("Failed to decode base64 body: {e}")))?;
+            let body_string = String::from_utf8(decoded).map_err(|e| {
+                Error::from_str(
+                    500,
+                    format!("Failed to convert decoded body to string: {e}"),
+                )
+            })?;
+            req.set_body(body_string);
         }
 
         Ok(req)
+    }
+
+    /// Determine if content should be base64 encoded to avoid YAML serialization issues
+    fn should_base64_encode(content: &str) -> bool {
+        // Base64 encode if content contains HTML tags, special YAML characters, or high ratio of non-ASCII
+        content.contains('<') && content.contains('>') || // HTML content
+        content.contains('%') && content.len() > 100 || // URL-encoded content
+        content.chars().filter(|c| !c.is_ascii()).count() > content.len() / 10 // High non-ASCII ratio
     }
 }
 
@@ -90,19 +124,27 @@ impl SerializableResponse {
             headers.insert(name.as_str().to_string(), header_values);
         }
 
-        let body =
-            if res.len().is_some() {
-                Some(res.body_string().await.map_err(|e| {
-                    Error::from_str(500, format!("Failed to read response body: {e}"))
-                })?)
+        let (body, body_base64) = if res.len().is_some() {
+            let body_string = res
+                .body_string()
+                .await
+                .map_err(|e| Error::from_str(500, format!("Failed to read response body: {e}")))?;
+
+            // Check if body contains binary/HTML content that should be base64 encoded
+            if Self::should_base64_encode(&body_string) {
+                (None, Some(general_purpose::STANDARD.encode(&body_string)))
             } else {
-                None
-            };
+                (Some(body_string), None)
+            }
+        } else {
+            (None, None)
+        };
 
         Ok(Self {
             status,
             headers,
             body,
+            body_base64,
             version,
         })
     }
@@ -120,8 +162,22 @@ impl SerializableResponse {
 
         if let Some(body) = &self.body {
             res.set_body(body.clone());
+        } else if let Some(body_base64) = &self.body_base64 {
+            if let Ok(decoded) = general_purpose::STANDARD.decode(body_base64) {
+                if let Ok(body_string) = String::from_utf8(decoded) {
+                    res.set_body(body_string);
+                }
+            }
         }
 
         res
+    }
+
+    /// Determine if content should be base64 encoded to avoid YAML serialization issues
+    fn should_base64_encode(content: &str) -> bool {
+        // Base64 encode if content contains HTML tags, special YAML characters, or high ratio of non-ASCII
+        content.contains('<') && content.contains('>') || // HTML content
+        content.contains('%') && content.len() > 100 || // URL-encoded content
+        content.chars().filter(|c| !c.is_ascii()).count() > content.len() / 10 // High non-ASCII ratio
     }
 }
