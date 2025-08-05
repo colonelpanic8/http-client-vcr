@@ -31,7 +31,10 @@
       "Bash(git commit:*)",
       "Bash(sed:*)",
       "Bash(VCR_RECORD=1 cargo test test_partial_replay_restart_edge_case)",
-      "Bash(VCR_RECORD=1 cargo test --test directory_vcr_tests test_partial_replay_restart_edge_case)"
+      "Bash(VCR_RECORD=1 cargo test --test directory_vcr_tests test_partial_replay_restart_edge_case)",
+      "Bash(VCR_RECORD=1 cargo test --test test_concurrent_requests_edge_case)",
+      "Bash(VCR_RECORD=1 cargo test --test test_exhausted_interactions_error_handling)",
+      "Bash(VCR_RECORD=1 cargo test)"
     ],
     "deny": []
   }

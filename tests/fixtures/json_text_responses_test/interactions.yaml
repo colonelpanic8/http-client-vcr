@@ -10,18 +10,18 @@
     headers:
       access-control-allow-origin:
       - '*'
-      access-control-allow-credentials:
-      - 'true'
-      date:
-      - Tue, 05 Aug 2025 20:33:52 GMT
-      connection:
-      - keep-alive
-      content-length:
-      - '429'
       content-type:
       - application/json
+      connection:
+      - keep-alive
+      access-control-allow-credentials:
+      - 'true'
       server:
       - gunicorn/19.9.0
+      date:
+      - Tue, 05 Aug 2025 21:25:56 GMT
+      content-length:
+      - '429'
     body_file: resp_001.txt
     version: None
 - request:
@@ -34,20 +34,20 @@
   response:
     status: 200
     headers:
-      access-control-allow-credentials:
-      - 'true'
-      content-type:
-      - text/html; charset=utf-8
       access-control-allow-origin:
       - '*'
       server:
       - gunicorn/19.9.0
+      date:
+      - Tue, 05 Aug 2025 21:25:56 GMT
+      access-control-allow-credentials:
+      - 'true'
       content-length:
       - '3741'
-      date:
-      - Tue, 05 Aug 2025 20:33:52 GMT
       connection:
       - keep-alive
+      content-type:
+      - text/html; charset=utf-8
     body_file: resp_002.txt
     version: None
 - request:
@@ -62,16 +62,16 @@
     headers:
       access-control-allow-credentials:
       - 'true'
+      date:
+      - Tue, 05 Aug 2025 21:25:56 GMT
+      connection:
+      - keep-alive
       access-control-allow-origin:
       - '*'
       content-type:
       - application/xml
-      date:
-      - Tue, 05 Aug 2025 20:33:53 GMT
       server:
       - gunicorn/19.9.0
-      connection:
-      - keep-alive
       content-length:
       - '522'
     body_file: resp_003.txt

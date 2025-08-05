@@ -1,0 +1,131 @@
+- request:
+    method: GET
+    url: https://httpbin.org/uuid
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Tue, 05 Aug 2025 21:26:02 GMT
+      content-length:
+      - '53'
+      server:
+      - gunicorn/19.9.0
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-origin:
+      - '*'
+      connection:
+      - keep-alive
+    body_file: resp_001.txt
+    version: None
+- request:
+    method: POST
+    url: https://httpbin.org/post
+    headers:
+      content-type:
+      - text/plain;charset=utf-8
+    body_file: req_002.txt
+    version: None
+  response:
+    status: 200
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      connection:
+      - keep-alive
+      content-length:
+      - '374'
+      content-type:
+      - application/json
+      access-control-allow-origin:
+      - '*'
+      date:
+      - Tue, 05 Aug 2025 21:26:02 GMT
+      server:
+      - gunicorn/19.9.0
+    body_file: resp_002.txt
+    version: None
+- request:
+    method: GET
+    url: https://httpbin.org/uuid
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      server:
+      - gunicorn/19.9.0
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-origin:
+      - '*'
+      content-type:
+      - application/json
+      connection:
+      - keep-alive
+      content-length:
+      - '53'
+      date:
+      - Tue, 05 Aug 2025 21:26:02 GMT
+    body_file: resp_003.txt
+    version: None
+- request:
+    method: GET
+    url: https://httpbin.org/json
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      date:
+      - Tue, 05 Aug 2025 21:26:03 GMT
+      server:
+      - gunicorn/19.9.0
+      content-type:
+      - application/json
+      connection:
+      - keep-alive
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '429'
+      access-control-allow-credentials:
+      - 'true'
+    body_file: resp_004.txt
+    version: None
+- request:
+    method: GET
+    url: https://httpbin.org/uuid
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      content-type:
+      - application/json
+      connection:
+      - keep-alive
+      access-control-allow-origin:
+      - '*'
+      content-length:
+      - '53'
+      access-control-allow-credentials:
+      - 'true'
+      date:
+      - Tue, 05 Aug 2025 21:26:03 GMT
+      server:
+      - gunicorn/19.9.0
+    body_file: resp_005.txt
+    version: None

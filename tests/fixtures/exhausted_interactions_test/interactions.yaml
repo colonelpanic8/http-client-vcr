@@ -1,0 +1,52 @@
+- request:
+    method: GET
+    url: https://httpbin.org/uuid
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      connection:
+      - keep-alive
+      access-control-allow-credentials:
+      - 'true'
+      date:
+      - Tue, 05 Aug 2025 21:26:01 GMT
+      content-length:
+      - '53'
+      content-type:
+      - application/json
+      server:
+      - gunicorn/19.9.0
+      access-control-allow-origin:
+      - '*'
+    body_file: resp_001.txt
+    version: None
+- request:
+    method: GET
+    url: https://httpbin.org/uuid
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      content-type:
+      - application/json
+      date:
+      - Tue, 05 Aug 2025 21:26:02 GMT
+      access-control-allow-credentials:
+      - 'true'
+      content-length:
+      - '53'
+      connection:
+      - keep-alive
+      access-control-allow-origin:
+      - '*'
+      server:
+      - gunicorn/19.9.0
+    body_file: resp_002.txt
+    version: None

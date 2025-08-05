@@ -6,7 +6,7 @@
     "Accept": "*/*", 
     "Content-Type": "application/octet-stream", 
     "Host": "httpbin.org", 
-    "X-Amzn-Trace-Id": "Root=1-68926a8c-562b656a119b29350d9afd9c"
+    "X-Amzn-Trace-Id": "Root=1-689276e4-7ac67b924e6ca12036fd9f33"
   }, 
   "origin": "67.173.240.41", 
   "url": "https://httpbin.org/get?test=1"
