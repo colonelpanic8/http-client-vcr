@@ -1,6 +1,6 @@
  [package]
 name = "http-client-vcr"
-version = "1.0.0"
+version = "1.1.0"
 edition = "2021"
 description = "Record http request and responses for testing"
 license = "MIT"
