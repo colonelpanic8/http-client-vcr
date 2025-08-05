@@ -1,0 +1,6697 @@
+
+
+
+
+
+
+    
+        <section
+            id="top-tracks-section"
+            data-require="components/library-fetch"
+            data-endpoint="/user/IvanMalison/library/music/The+Beatles/Magical+Mystery+Tour"
+            data-section-id="top-tracks-section"
+            class="library-fetch"
+            count="10"
+            v-bind:class="{ loading: loading, 'library-format-grid': format }"
+        >
+            <div v-if="loading && !format" class="loader">
+                
+    
+
+    <table
+        
+        class="
+            chartlist
+            chartlist__placeholder
+            
+
+            
+                chartlist--with-image
+                chartlist__placeholder--with-image
+            
+            
+                chartlist--with-bar
+                chartlist__placeholder--with-bar
+            
+        "
+    >
+        <thead class="sr-only">
+            <tr>
+
+            
+                
+                <th>
+                    Image
+                </th>
+            
+
+            <th>
+                
+                Name
+            </th>
+
+            
+                
+                <th>Scrobbles</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            
+                <tr class="chartlist-row chartlist__placeholder-row">
+                    
+                        <td class="chartlist-image chartlist__placeholder-image">
+                        </td>
+                    
+
+                    <td class="chartlist-name chartlist__placeholder-name">
+                        <div class="chartlist__placeholder-loading"></div>
+                    </td>
+
+                    
+                        <td class="chartlist-bar chartlist__placeholder-bar">
+                        </td>
+                    
+                </tr>
+            
+                <tr class="chartlist-row chartlist__placeholder-row">
+                    
+                        <td class="chartlist-image chartlist__placeholder-image">
+                        </td>
+                    
+
+                    <td class="chartlist-name chartlist__placeholder-name">
+                        <div class="chartlist__placeholder-loading"></div>
+                    </td>
+
+                    
+                        <td class="chartlist-bar chartlist__placeholder-bar">
+                        </td>
+                    
+                </tr>
+            
+                <tr class="chartlist-row chartlist__placeholder-row">
+                    
+                        <td class="chartlist-image chartlist__placeholder-image">
+                        </td>
+                    
+
+                    <td class="chartlist-name chartlist__placeholder-name">
+                        <div class="chartlist__placeholder-loading"></div>
+                    </td>
+
+                    
+                        <td class="chartlist-bar chartlist__placeholder-bar">
+                        </td>
+                    
+                </tr>
+            
+                <tr class="chartlist-row chartlist__placeholder-row">
+                    
+                        <td class="chartlist-image chartlist__placeholder-image">
+                        </td>
+                    
+
+                    <td class="chartlist-name chartlist__placeholder-name">
+                        <div class="chartlist__placeholder-loading"></div>
+                    </td>
+
+                    
+                        <td class="chartlist-bar chartlist__placeholder-bar">
+                        </td>
+                    
+                </tr>
+            
+                <tr class="chartlist-row chartlist__placeholder-row">
+                    
+                        <td class="chartlist-image chartlist__placeholder-image">
+                        </td>
+                    
+
+                    <td class="chartlist-name chartlist__placeholder-name">
+                        <div class="chartlist__placeholder-loading"></div>
+                    </td>
+
+                    
+                        <td class="chartlist-bar chartlist__placeholder-bar">
+                        </td>
+                    
+                </tr>
+            
+                <tr class="chartlist-row chartlist__placeholder-row">
+                    
+                        <td class="chartlist-image chartlist__placeholder-image">
+                        </td>
+                    
+
+                    <td class="chartlist-name chartlist__placeholder-name">
+                        <div class="chartlist__placeholder-loading"></div>
+                    </td>
+
+                    
+                        <td class="chartlist-bar chartlist__placeholder-bar">
+                        </td>
+                    
+                </tr>
+            
+                <tr class="chartlist-row chartlist__placeholder-row">
+                    
+                        <td class="chartlist-image chartlist__placeholder-image">
+                        </td>
+                    
+
+                    <td class="chartlist-name chartlist__placeholder-name">
+                        <div class="chartlist__placeholder-loading"></div>
+                    </td>
+
+                    
+                        <td class="chartlist-bar chartlist__placeholder-bar">
+                        </td>
+                    
+                </tr>
+            
+                <tr class="chartlist-row chartlist__placeholder-row">
+                    
+                        <td class="chartlist-image chartlist__placeholder-image">
+                        </td>
+                    
+
+                    <td class="chartlist-name chartlist__placeholder-name">
+                        <div class="chartlist__placeholder-loading"></div>
+                    </td>
+
+                    
+                        <td class="chartlist-bar chartlist__placeholder-bar">
+                        </td>
+                    
+                </tr>
+            
+                <tr class="chartlist-row chartlist__placeholder-row">
+                    
+                        <td class="chartlist-image chartlist__placeholder-image">
+                        </td>
+                    
+
+                    <td class="chartlist-name chartlist__placeholder-name">
+                        <div class="chartlist__placeholder-loading"></div>
+                    </td>
+
+                    
+                        <td class="chartlist-bar chartlist__placeholder-bar">
+                        </td>
+                    
+                </tr>
+            
+        </tbody>
+    </table>
+
+            </div>
+            <div v-else-if="loading && format" class="loader">
+                
+    <ol
+        class="
+            grid-items
+            grid-items__placeholder
+        "
+    >
+        <li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li><li class="
+                    grid-items-item
+                    js-focus-controls-container
+            ">
+                <div class="grid-items-empty-inner">
+                    <div class="grid-items-item--loading"></div>
+                </div>
+            </li>
+    </ol>
+
+            </div>
+            <div v-else v-html="html">
+                
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+
+    <table
+        
+        class="
+            chartlist
+            
+            
+                chartlist--with-index
+                chartlist--with-index--length-2
+            
+            
+                chartlist--with-play
+            
+            
+                chartlist--with-mobile-play
+            
+            
+            
+                chartlist--with-image
+            
+            
+                chartlist--with-loved
+            
+            
+                chartlist--with-artist
+            
+            
+            
+                chartlist--with-more
+            
+            
+                chartlist--with-duration
+            
+            
+                chartlist--with-bar
+            
+            
+            
+            
+            
+            
+                chartlist--with-buylinks
+            
+            
+            
+            
+        "
+    >
+        <thead class="sr-only">
+            <tr>
+                
+
+                
+                    
+                    <th>Rank</th>
+                
+
+                
+
+                
+                    
+                    <th>Play</th>
+                
+
+                
+
+                
+                    
+                    <th>
+                        
+                            Album
+                        
+                    </th>
+                
+
+                
+                    
+                    <th>Loved</th>
+                
+
+                <th>
+                    
+                    
+                        Track name
+                    
+                </th>
+
+                
+                    
+                    <th>Artist name </th>
+                
+
+                
+
+                
+                    
+                    <th>Buy</th>
+                
+
+                
+                    
+                    <th>Options</th>
+                
+
+                
+
+                
+                    
+                    <th>Duration</th>
+                
+
+                
+
+                
+                    
+                    <th>Scrobbles</th>
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+            </tr>
+        </thead>
+        <tbody
+                data-playlisting-add-entries
+                
+        >
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                1
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/3Am0IbOxmvlSXro7N5iSfZ"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="3Am0IbOxmvlSXro7N5iSfZ"
+    data-spotify-url="https://open.spotify.com/track/3Am0IbOxmvlSXro7N5iSfZ"
+
+    data-track-name="Strawberry Fields Forever"
+    data-track-url="/music/The+Beatles/_/Strawberry+Fields+Forever"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=HtUH9z_Oey8"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="HtUH9z_Oey8"
+    data-youtube-url="https://www.youtube.com/watch?v=HtUH9z_Oey8"
+
+    data-track-name="Strawberry Fields Forever"
+    data-track-url="/music/The+Beatles/_/Strawberry+Fields+Forever"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/Magical+Mystery+Tour" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/e1d5c567052442288451e47c647f2d56.jpg"
+            alt="Magical Mystery Tour"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="7b64895360d1804577662b46e73e2a6c"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="UnloveTrack"
+                >
+                    Unlove this track
+                </button>
+                <input type="hidden" name="action" value="unlove">
+                
+                    <input type="hidden" name="track" value="Strawberry Fields Forever">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1002476">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="7b64895360d1804577662b46e73e2a6c"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/Strawberry+Fields+Forever"
+            
+            
+                title="Strawberry Fields Forever"
+            
+                class=""
+            
+        >Strawberry Fields Forever</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-ba157a15-45d9-4f89-826c-a9ea756d84aa"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/Strawberry+Fields+Forever/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-ba157a15-45d9-4f89-826c-a9ea756d84aa"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-49a20ad9-796d-4b5e-93ea-6b36f3c75202"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/Strawberry+Fields+Forever/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-49a20ad9-796d-4b5e-93ea-6b36f3c75202"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/Strawberry+Fields+Forever"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Strawberry+Fields+Forever"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="7b64895360d1804577662b46e73e2a6c"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="UnloveTrack"
+                >
+                    Unlove this track
+                </button>
+                <input type="hidden" name="action" value="unlove">
+                
+                    <input type="hidden" name="track" value="Strawberry Fields Forever">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1002476">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="Strawberry Fields Forever" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                4:06
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Strawberry+Fields+Forever"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="64"
+                    class="chartlist-count-bar-slug"
+                    style="width:100.0%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                64 <span class="stat-name">scrobbles</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                2
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/7qUPlJTYxDRnpw3FKoWhm1"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="7qUPlJTYxDRnpw3FKoWhm1"
+    data-spotify-url="https://open.spotify.com/track/7qUPlJTYxDRnpw3FKoWhm1"
+
+    data-track-name="I Am the Walrus"
+    data-track-url="/music/The+Beatles/_/I+Am+the+Walrus"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=t1Jm5epJr10"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="t1Jm5epJr10"
+    data-youtube-url="https://www.youtube.com/watch?v=t1Jm5epJr10"
+
+    data-track-name="I Am the Walrus"
+    data-track-url="/music/The+Beatles/_/I+Am+the+Walrus"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/Magical+Mystery+Tour" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/e1d5c567052442288451e47c647f2d56.jpg"
+            alt="Magical Mystery Tour"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="057570ee6039ebfb7bfff373fc48f81f"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="UnloveTrack"
+                >
+                    Unlove this track
+                </button>
+                <input type="hidden" name="action" value="unlove">
+                
+                    <input type="hidden" name="track" value="I Am the Walrus">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1017557">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="057570ee6039ebfb7bfff373fc48f81f"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/I+Am+the+Walrus"
+            
+            
+                title="I Am the Walrus"
+            
+                class=""
+            
+        >I Am the Walrus</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-2497c104-59c9-48b9-b4f2-0b46e255d287"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/I+Am+the+Walrus/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-2497c104-59c9-48b9-b4f2-0b46e255d287"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-8bdba7de-ceeb-47b6-8561-115e14f2a6b4"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/I+Am+the+Walrus/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-8bdba7de-ceeb-47b6-8561-115e14f2a6b4"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/I+Am+the+Walrus"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/I+Am+the+Walrus"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="057570ee6039ebfb7bfff373fc48f81f"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="UnloveTrack"
+                >
+                    Unlove this track
+                </button>
+                <input type="hidden" name="action" value="unlove">
+                
+                    <input type="hidden" name="track" value="I Am the Walrus">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1017557">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="I Am the Walrus" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                5:53
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/I+Am+the+Walrus"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="28"
+                    class="chartlist-count-bar-slug"
+                    style="width:43.75%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                28 <span class="stat-name">scrobbles</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                3
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/1sjmKmR4u9xDeJHjDCn2bZ"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="1sjmKmR4u9xDeJHjDCn2bZ"
+    data-spotify-url="https://open.spotify.com/track/1sjmKmR4u9xDeJHjDCn2bZ"
+
+    data-track-name="Penny Lane"
+    data-track-url="/music/The+Beatles/_/Penny+Lane"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=S-rB0pHI9fU"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="S-rB0pHI9fU"
+    data-youtube-url="https://www.youtube.com/watch?v=S-rB0pHI9fU"
+
+    data-track-name="Penny Lane"
+    data-track-url="/music/The+Beatles/_/Penny+Lane"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/Magical+Mystery+Tour" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/e1d5c567052442288451e47c647f2d56.jpg"
+            alt="Magical Mystery Tour"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="f7d2f1a55b067d4c58d13f8879272202"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="UnloveTrack"
+                >
+                    Unlove this track
+                </button>
+                <input type="hidden" name="action" value="unlove">
+                
+                    <input type="hidden" name="track" value="Penny Lane">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="10416">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="f7d2f1a55b067d4c58d13f8879272202"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/Penny+Lane"
+            
+            
+                title="Penny Lane"
+            
+                class=""
+            
+        >Penny Lane</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-e10bb874-b75c-46d1-92f1-8f87a02bae75"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/Penny+Lane/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-e10bb874-b75c-46d1-92f1-8f87a02bae75"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-2e1b4749-5ea3-4eef-8877-0136985259a9"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/Penny+Lane/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-2e1b4749-5ea3-4eef-8877-0136985259a9"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/Penny+Lane"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Penny+Lane"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="f7d2f1a55b067d4c58d13f8879272202"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="UnloveTrack"
+                >
+                    Unlove this track
+                </button>
+                <input type="hidden" name="action" value="unlove">
+                
+                    <input type="hidden" name="track" value="Penny Lane">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="10416">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="Penny Lane" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                3:01
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Penny+Lane"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="12"
+                    class="chartlist-count-bar-slug"
+                    style="width:18.75%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                12 <span class="stat-name">scrobbles</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                4
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/6KqiVlOLfDzJViJVAPym1p"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="6KqiVlOLfDzJViJVAPym1p"
+    data-spotify-url="https://open.spotify.com/track/6KqiVlOLfDzJViJVAPym1p"
+
+    data-track-name="All You Need Is Love"
+    data-track-url="/music/The+Beatles/_/All+You+Need+Is+Love"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=_7xMfIp-irg"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="_7xMfIp-irg"
+    data-youtube-url="https://www.youtube.com/watch?v=_7xMfIp-irg"
+
+    data-track-name="All You Need Is Love"
+    data-track-url="/music/The+Beatles/_/All+You+Need+Is+Love"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/Magical+Mystery+Tour" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/e1d5c567052442288451e47c647f2d56.jpg"
+            alt="Magical Mystery Tour"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="ccb243a72c427cbb90555e0210615dca"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="UnloveTrack"
+                >
+                    Unlove this track
+                </button>
+                <input type="hidden" name="action" value="unlove">
+                
+                    <input type="hidden" name="track" value="All You Need Is Love">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="10432">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="ccb243a72c427cbb90555e0210615dca"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/All+You+Need+Is+Love"
+            
+            
+                title="All You Need Is Love"
+            
+                class=""
+            
+        >All You Need Is Love</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-6bf77b70-ae66-4842-9e25-efa6a1700225"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/All+You+Need+Is+Love/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-6bf77b70-ae66-4842-9e25-efa6a1700225"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-4d2f9c61-c897-472f-a442-2bffe439cfc7"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/All+You+Need+Is+Love/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-4d2f9c61-c897-472f-a442-2bffe439cfc7"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/All+You+Need+Is+Love"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/All+You+Need+Is+Love"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="ccb243a72c427cbb90555e0210615dca"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="loved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="UnloveTrack"
+                >
+                    Unlove this track
+                </button>
+                <input type="hidden" name="action" value="unlove">
+                
+                    <input type="hidden" name="track" value="All You Need Is Love">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="10432">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="All You Need Is Love" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                1:35
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/All+You+Need+Is+Love"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="9"
+                    class="chartlist-count-bar-slug"
+                    style="width:14.0625%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                9 <span class="stat-name">scrobbles</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                5
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/0vZ97gHhemKm6c64hTfJNA"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="0vZ97gHhemKm6c64hTfJNA"
+    data-spotify-url="https://open.spotify.com/track/0vZ97gHhemKm6c64hTfJNA"
+
+    data-track-name="Hello, Goodbye"
+    data-track-url="/music/The+Beatles/_/Hello,+Goodbye"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=rblYSKz_VnI"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="rblYSKz_VnI"
+    data-youtube-url="https://www.youtube.com/watch?v=rblYSKz_VnI"
+
+    data-track-name="Hello, Goodbye"
+    data-track-url="/music/The+Beatles/_/Hello,+Goodbye"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/1967-1970+(CD+1)" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/54529bcf36850d0c282fa6043b61b8c7.jpg"
+            alt="1967-1970 (CD 1)"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="c2d65d6603e9b663b4723bfac501d9c5"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Hello, Goodbye">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1059249">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="c2d65d6603e9b663b4723bfac501d9c5"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/Hello,+Goodbye"
+            
+            
+                title="Hello, Goodbye"
+            
+                class=""
+            
+        >Hello, Goodbye</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-8fce7bde-d2cf-4e49-9004-5dddb620e625"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/Hello,+Goodbye/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-8fce7bde-d2cf-4e49-9004-5dddb620e625"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-1e84a2bb-de31-4d58-a572-c9d44dab37aa"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/Hello,+Goodbye/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-1e84a2bb-de31-4d58-a572-c9d44dab37aa"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/Hello,+Goodbye"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Hello,+Goodbye"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="c2d65d6603e9b663b4723bfac501d9c5"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Hello, Goodbye">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1059249">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="Hello, Goodbye" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                3:29
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Hello,+Goodbye"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="5"
+                    class="chartlist-count-bar-slug"
+                    style="width:7.8125%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                5 <span class="stat-name">scrobbles</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                6
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/0QIX9BS0AUCQcHYvyrsMkV"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="0QIX9BS0AUCQcHYvyrsMkV"
+    data-spotify-url="https://open.spotify.com/track/0QIX9BS0AUCQcHYvyrsMkV"
+
+    data-track-name="Blue Jay Way"
+    data-track-url="/music/The+Beatles/_/Blue+Jay+Way"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=Coz0TmK2ZIg"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="Coz0TmK2ZIg"
+    data-youtube-url="https://www.youtube.com/watch?v=Coz0TmK2ZIg"
+
+    data-track-name="Blue Jay Way"
+    data-track-url="/music/The+Beatles/_/Blue+Jay+Way"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/Magical+Mystery+Tour" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/e1d5c567052442288451e47c647f2d56.jpg"
+            alt="Magical Mystery Tour"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="1388ea96cabd511f4623f5f9ddbdbee5"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Blue Jay Way">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="2739206">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="1388ea96cabd511f4623f5f9ddbdbee5"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/Blue+Jay+Way"
+            
+            
+                title="Blue Jay Way"
+            
+                class=""
+            
+        >Blue Jay Way</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-94bd97b9-b2e6-4f27-b608-b4cba56e6a48"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/Blue+Jay+Way/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-94bd97b9-b2e6-4f27-b608-b4cba56e6a48"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-e7a4cd79-9c10-449b-acb1-4f96be1e79d6"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/Blue+Jay+Way/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-e7a4cd79-9c10-449b-acb1-4f96be1e79d6"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/Blue+Jay+Way"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Blue+Jay+Way"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="1388ea96cabd511f4623f5f9ddbdbee5"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Blue Jay Way">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="2739206">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="Blue Jay Way" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                3:57
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Blue+Jay+Way"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="2"
+                    class="chartlist-count-bar-slug"
+                    style="width:3.125%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                2 <span class="stat-name">scrobbles</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                7
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/6rHh8urosEFRI67xVa6fzU"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="6rHh8urosEFRI67xVa6fzU"
+    data-spotify-url="https://open.spotify.com/track/6rHh8urosEFRI67xVa6fzU"
+
+    data-track-name="The Fool on the Hill"
+    data-track-url="/music/The+Beatles/_/The+Fool+on+the+Hill"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=wsRatIMUSu8"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="wsRatIMUSu8"
+    data-youtube-url="https://www.youtube.com/watch?v=wsRatIMUSu8"
+
+    data-track-name="The Fool on the Hill"
+    data-track-url="/music/The+Beatles/_/The+Fool+on+the+Hill"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/Magical+Mystery+Tour" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/e1d5c567052442288451e47c647f2d56.jpg"
+            alt="Magical Mystery Tour"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="7572428519ba723ed3a1e917a453ae5c"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="The Fool on the Hill">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1010169">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="7572428519ba723ed3a1e917a453ae5c"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/The+Fool+on+the+Hill"
+            
+            
+                title="The Fool on the Hill"
+            
+                class=""
+            
+        >The Fool on the Hill</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-c8c55f27-88c0-46ec-b195-53f36ad2d9e5"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/The+Fool+on+the+Hill/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-c8c55f27-88c0-46ec-b195-53f36ad2d9e5"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-b6276b8a-fb04-4c9c-8c3a-5d9c9166c844"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/The+Fool+on+the+Hill/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-b6276b8a-fb04-4c9c-8c3a-5d9c9166c844"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/The+Fool+on+the+Hill"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/The+Fool+on+the+Hill"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="7572428519ba723ed3a1e917a453ae5c"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="The Fool on the Hill">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1010169">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="The Fool on the Hill" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                2:56
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/The+Fool+on+the+Hill"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="2"
+                    class="chartlist-count-bar-slug"
+                    style="width:3.125%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                2 <span class="stat-name">scrobbles</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                8
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/2JigRzQ3AWCd4BSJoAI0vR"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="2JigRzQ3AWCd4BSJoAI0vR"
+    data-spotify-url="https://open.spotify.com/track/2JigRzQ3AWCd4BSJoAI0vR"
+
+    data-track-name="Baby You&#39;re a Rich Man"
+    data-track-url="/music/The+Beatles/_/Baby+You%27re+a+Rich+Man"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=i5m-sgtwFck"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="i5m-sgtwFck"
+    data-youtube-url="https://www.youtube.com/watch?v=i5m-sgtwFck"
+
+    data-track-name="Baby You&#39;re a Rich Man"
+    data-track-url="/music/The+Beatles/_/Baby+You%27re+a+Rich+Man"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/Magical+Mystery+Tour" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/e1d5c567052442288451e47c647f2d56.jpg"
+            alt="Magical Mystery Tour"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="43e32a140c45b71ebca2310778ac1288"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Baby You&#39;re a Rich Man">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="2716311">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="43e32a140c45b71ebca2310778ac1288"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/Baby+You%27re+a+Rich+Man"
+            
+            
+                title="Baby You&#39;re a Rich Man"
+            
+                class=""
+            
+        >Baby You&#39;re a Rich Man</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-572561ac-fd7f-4e20-b192-841c4de2e65e"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/Baby+You%27re+a+Rich+Man/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-572561ac-fd7f-4e20-b192-841c4de2e65e"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-7486de15-ec3b-473b-812c-20a45c9a0018"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/Baby+You%27re+a+Rich+Man/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-7486de15-ec3b-473b-812c-20a45c9a0018"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/Baby+You%27re+a+Rich+Man"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Baby+You%27re+a+Rich+Man"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="43e32a140c45b71ebca2310778ac1288"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Baby You&#39;re a Rich Man">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="2716311">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="Baby You&#39;re a Rich Man" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                2:59
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Baby+You%27re+a+Rich+Man"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="1"
+                    class="chartlist-count-bar-slug"
+                    style="width:1.5625%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                1 <span class="stat-name">scrobble</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                9
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/1itLKsCWHtLnxALkgBk1Fa"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="1itLKsCWHtLnxALkgBk1Fa"
+    data-spotify-url="https://open.spotify.com/track/1itLKsCWHtLnxALkgBk1Fa"
+
+    data-track-name="Flying"
+    data-track-url="/music/The+Beatles/_/Flying"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=Z1ONJQLdZrk"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="Z1ONJQLdZrk"
+    data-youtube-url="https://www.youtube.com/watch?v=Z1ONJQLdZrk"
+
+    data-track-name="Flying"
+    data-track-url="/music/The+Beatles/_/Flying"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/Magical+Mystery+Tour" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/e1d5c567052442288451e47c647f2d56.jpg"
+            alt="Magical Mystery Tour"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="9aa9f4935765922735130d6dbccee061"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Flying">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="2716504">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="9aa9f4935765922735130d6dbccee061"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/Flying"
+            
+            
+                title="Flying"
+            
+                class=""
+            
+        >Flying</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-721b5716-3f96-4bf4-b875-95d4dfc134fe"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/Flying/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-721b5716-3f96-4bf4-b875-95d4dfc134fe"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-fd78a58a-3903-4b9a-8ead-13fbd8ae4cb1"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/Flying/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-fd78a58a-3903-4b9a-8ead-13fbd8ae4cb1"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/Flying"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Flying"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="9aa9f4935765922735130d6dbccee061"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Flying">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="2716504">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="Flying" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                2:17
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Flying"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="1"
+                    class="chartlist-count-bar-slug"
+                    style="width:1.5625%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                1 <span class="stat-name">scrobble</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+                
+
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+        
+    
+
+    
+        
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <tr
+        class="
+            chartlist-row
+            
+            
+            
+                chartlist-row--with-buylinks
+            
+            
+            
+                js-focus-controls-container
+            
+            
+            
+            
+        "
+
+        data-scrobble-row
+        data-playlist-row
+        data-ajax-form-state
+
+        
+
+        
+
+        
+
+        
+
+        
+    >
+        
+
+        
+
+        
+            <td class="chartlist-index">
+                10
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-play">
+                
+    
+        
+    
+
+    
+        
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button desktop-playlink
+        
+            js-playlink
+        
+    "
+    href="https://open.spotify.com/track/0qHMhBZqYb99yhX9BHcIkV"
+    target="_blank"
+
+    data-playlink-affiliate="spotify"
+    data-spotify-id="0qHMhBZqYb99yhX9BHcIkV"
+    data-spotify-url="https://open.spotify.com/track/0qHMhBZqYb99yhX9BHcIkV"
+
+    data-track-name="Magical Mystery Tour"
+    data-track-url="/music/The+Beatles/_/Magical+Mystery+Tour"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on Spotify"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="spotify"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+            
+                
+            
+            <a
+                
+    class="
+        chartlist-play-button mobile-playlink
+        
+            js-playlink
+        
+    "
+    href="https://www.youtube.com/watch?v=l8WMGBuNaus"
+    target="_blank"
+
+    data-playlink-affiliate="youtube"
+    data-youtube-id="l8WMGBuNaus"
+    data-youtube-url="https://www.youtube.com/watch?v=l8WMGBuNaus"
+
+    data-track-name="Magical Mystery Tour"
+    data-track-url="/music/The+Beatles/_/Magical+Mystery+Tour"
+    
+        data-artist-name="The Beatles"
+        data-artist-url="/music/The+Beatles"
+    
+    title="Play on YouTube"
+    
+    data-analytics-action="PlayTrackOnPage"
+    data-analytics-label="youtube"
+
+    
+
+
+                
+            >
+                
+                    Play track
+                
+            </a>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-image">
+                
+                    
+    
+        
+    
+
+    
+
+    
+
+    
+        <a href="/music/The+Beatles/Magical+Mystery+Tour" class="cover-art">
+    
+
+    
+        <img
+            src="https://lastfm.freetls.fastly.net/i/u/64s/e1d5c567052442288451e47c647f2d56.jpg"
+            alt="Magical Mystery Tour"
+            
+            loading="lazy"
+        />
+    
+
+    
+        </a>
+    
+
+                
+                
+            </td>
+        
+
+        
+            <td class="chartlist-loved">
+                
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="3b2176a02222264ad8b744a476ad61e0"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button chartlist-love-button"
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Magical Mystery Tour">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1010791">
+                
+            </form>
+        
+    </div>
+
+    
+
+            </td>
+        
+
+        <td
+            class="chartlist-name"
+            
+
+            
+                
+    
+    
+        
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="3b2176a02222264ad8b744a476ad61e0"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    
+
+            
+        >
+            
+            
+            <a
+            href="/music/The+Beatles/_/Magical+Mystery+Tour"
+            
+            
+                title="Magical Mystery Tour"
+            
+                class=""
+            
+        >Magical Mystery Tour</a>
+        </td>
+
+        
+            <td
+                class="chartlist-artist"
+                
+            >
+                
+                
+            </td>
+        
+
+        
+
+        
+            <td
+                
+                    class="chartlist-buylinks focus-control"
+                
+            >
+                <div class="lazy-buylinks ">
+            
+            <button
+                class="
+                    disclose-trigger
+                    lazy-buylinks-toggle
+                "
+                aria-expanded="false"
+                aria-controls="buylinks-1e496026-aa34-4f32-b425-6c8c4d550a61"
+                data-disclose-lazy-buylinks
+                data-lazy-buylink-url="/music/The+Beatles/_/Magical+Mystery+Tour/+partial/buylinks"
+                data-dropdown-layout-at="center bottom+3"
+            >Buy</button>
+            <ul
+                id="buylinks-1e496026-aa34-4f32-b425-6c8c4d550a61"
+                class="
+                    disclose-hide
+                    dropdown-menu-clickable
+                    buylinks-dropdown-menu
+                "
+            >
+                <li
+                    class="menu-loading"
+                    data-lazy-buylinks-loading
+                    aria-live="polite"
+                >Loading</li>
+            </ul>
+        </div>
+            </td>
+        
+
+        
+            <td class="chartlist-more focus-control">
+                
+    
+        
+        
+        
+        
+        
+        
+            
+        
+
+        
+            
+            <div>
+                <button
+                    class="
+                        disclose-trigger
+                        chartlist-more-button
+                    "
+                    aria-expanded="false"
+                    aria-controls="chartlist-more-5de727a6-ffd7-44f2-a565-7a78666d6246"
+                    data-disclose-lazy-buylinks
+                    data-lazy-buylink-url="/music/The+Beatles/_/Magical+Mystery+Tour/+partial/buylinks"
+                    data-dropdown-layout-at="center bottom+3"
+                >More</button>
+                <ul
+                    id="chartlist-more-5de727a6-ffd7-44f2-a565-7a78666d6246"
+                    class="
+                        disclose-hide
+                        disclose-hide--js-only
+                        dropdown-menu-clickable
+                        chartlist-more-menu
+                    "
+                >
+
+                    
+
+                    
+
+                    
+                        
+                        
+                        
+                        
+    
+        
+    
+    <li>
+        <a
+            href="/music/The+Beatles/_/Magical+Mystery+Tour"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track
+                
+            
+        </a>
+    </li>
+
+
+                        
+                            
+    
+        
+    
+    <li>
+        <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Magical+Mystery+Tour"
+            class="
+                dropdown-menu-clickable-item
+                more-item--track
+            "
+        >
+            
+                
+                    Go to track in library
+                
+            
+        </a>
+    </li>
+
+                        
+
+                        
+
+                        
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            
+    
+    
+        
+        
+    <div
+        
+    
+        data-toggle-button
+        data-toggle-button-group-id="3b2176a02222264ad8b744a476ad61e0"
+        
+            data-toggle-button-states="[{&#34;name&#34;: &#34;unloved&#34;, &#34;button_text&#34;: &#34;Love this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;love&#34;, &#34;analytics_action&#34;: &#34;LoveTrack&#34;, &#34;event&#34;: &#34;track.love&#34;}, {&#34;name&#34;: &#34;loved&#34;, &#34;button_text&#34;: &#34;Unlove this track&#34;, &#34;url&#34;: &#34;/user/IvanMalison/loved&#34;, &#34;action&#34;: &#34;unlove&#34;, &#34;analytics_action&#34;: &#34;UnloveTrack&#34;, &#34;event&#34;: &#34;track.unlove&#34;}]"
+        
+    
+    data-toggle-button-current-state="unloved"
+
+    >
+        
+            <form
+                action="/user/IvanMalison/loved"
+                method="post"
+            >
+                <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+                <button
+                    type="submit"
+                    class="toggle-button 
+                                    dropdown-menu-clickable-item
+                                    chartlist-more-menu-love
+                                "
+                    data-analytics-action="LoveTrack"
+                >
+                    Love this track
+                </button>
+                <input type="hidden" name="action" value="love">
+                
+                    <input type="hidden" name="track" value="Magical Mystery Tour">
+                
+                    <input type="hidden" name="artist" value="The Beatles">
+                
+                    <input type="hidden" name="track_spelling_id" value="1010791">
+                
+            </form>
+        
+    </div>
+
+    
+
+                        </li>
+                    
+
+                    
+                        <li>
+                            
+                                
+    
+        <form
+            method="POST"
+            class=""
+            action="/user/IvanMalison/obsessions"
+            data-submit-to-modal
+        >
+            <input type='hidden' name='csrfmiddlewaretoken' value='vb6DbxtPOFbM0qj8X0gJR8FMWXqhWhQ0IeDuRRKyiC5gNWdSS4bWArPNosCHnv5p' />
+            <input type="hidden" name="name" value="Magical Mystery Tour" />
+            <input type="hidden" name="artist_name" value="The Beatles" />
+            
+            <button class="
+                                        mimic-link
+                                        dropdown-menu-clickable-item
+                                        more-item--obsession
+                                    ">
+                Set track as current obsession
+            </button>
+        </form>
+    
+
+                            
+                        </li>
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="visible-xs">
+                            <span class="menu-title">
+                                
+                                    Get track
+                                
+                            </span>
+                            <ul class="buylinks-dropdown-menu">
+                                <li
+                                    class="menu-loading"
+                                    data-lazy-buylinks-loading
+                                    aria-live="polite"
+                                >Loading</li>
+                            </ul>
+                        </li>
+                    
+                </ul>
+            </div>
+        
+    
+
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-duration">
+                0:41
+            </td>
+        
+
+        
+
+        
+            <td class="chartlist-bar">
+                
+    
+        <span class="chartlist-count-bar">
+            <a
+            href="/user/IvanMalison/library/music/The+Beatles/_/Magical+Mystery+Tour"
+            
+            
+                class="chartlist-count-bar-link"
+            
+        >
+                <span
+                    data-max-stat-value="64"
+                    data-stat-value="1"
+                    class="chartlist-count-bar-slug"
+                    style="width:1.5625%;"
+                ></span>
+                <span class="chartlist-count-bar-value">
+                    
+        
+            
+                1 <span class="stat-name">scrobble</span>
+            
+        
+    
+                </span>
+            </a>
+        </span>
+    
+
+            </td>
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+    </tr>
+
+            
+        </tbody>
+    </table>
+
+
+    
+    
+
+
+            </div>
+        </section>
+    
+

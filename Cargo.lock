@@ -797,7 +797,7 @@ dependencies = [
 
 [[package]]
 name = "http-client-vcr"
-version = "0.2.0"
+version = "1.0.0"
 dependencies = [
  "async-trait",
  "base64 0.22.1",
