@@ -228,44 +228,68 @@ async fn test_json_and_text_responses_directory_format() -> Result<(), Box<dyn s
 }
 
 #[tokio::test]
-async fn test_sequential_identical_requests_directory_format() -> Result<(), Box<dyn std::error::Error>> {
+async fn test_sequential_identical_requests_directory_format(
+) -> Result<(), Box<dyn std::error::Error>> {
     let setup = VcrTestSetup::new("sequential_identical_requests_test")?;
     let vcr_client = setup.create_vcr_client().await?;
 
     // Use httpbin.org/uuid which returns a different UUID each time
     let url = "https://httpbin.org/uuid";
-    
+
     let mut responses = Vec::new();
-    
+
     // Make the same request 3 times - each should get a different response in record mode
     for i in 1..=3 {
         let request = http_types::Request::new(Method::Get, Url::parse(url)?);
         let response = vcr_client.send(request).await?;
-        
-        println!("Request {} to {} returned status: {}", i, url, response.status());
+
+        println!(
+            "Request {} to {} returned status: {}",
+            i,
+            url,
+            response.status()
+        );
         assert!(response.status().is_success());
-        
+
         // Capture the response body to compare
         let mut response = response;
         let body = response.body_string().await?;
         responses.push(body);
-        
-        println!("Response {}: {}", i, responses[i-1]);
+
+        println!("Response {}: {}", i, responses[i - 1]);
     }
-    
+
     // In record mode, all responses should be different (different UUIDs)
     // In replay mode, we should get the same sequence of different responses
     if matches!(setup.mode, VcrMode::Record) {
         // In record mode, each UUID should be different
-        assert_ne!(responses[0], responses[1], "First and second responses should be different");
-        assert_ne!(responses[1], responses[2], "Second and third responses should be different");
-        assert_ne!(responses[0], responses[2], "First and third responses should be different");
+        assert_ne!(
+            responses[0], responses[1],
+            "First and second responses should be different"
+        );
+        assert_ne!(
+            responses[1], responses[2],
+            "Second and third responses should be different"
+        );
+        assert_ne!(
+            responses[0], responses[2],
+            "First and third responses should be different"
+        );
     } else {
         // In replay mode, we should get the same sequence as was recorded
         // The responses should still be different from each other (different UUIDs from recording)
-        assert_ne!(responses[0], responses[1], "Replayed responses should maintain their differences");
-        assert_ne!(responses[1], responses[2], "Replayed responses should maintain their differences");
-        assert_ne!(responses[0], responses[2], "Replayed responses should maintain their differences");
+        assert_ne!(
+            responses[0], responses[1],
+            "Replayed responses should maintain their differences"
+        );
+        assert_ne!(
+            responses[1], responses[2],
+            "Replayed responses should maintain their differences"
+        );
+        assert_ne!(
+            responses[0], responses[2],
+            "Replayed responses should maintain their differences"
+        );
     }
 
     Ok(())

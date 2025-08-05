@@ -246,15 +246,21 @@ impl VcrClient {
         cassette: &'a Cassette,
     ) -> Option<(usize, &'a Interaction)> {
         let used_interactions = self.used_interactions.lock().await;
-        
+
         // Create a filtered copy of the request for matching against stored filtered interactions
         if let Ok(mut filtered_request) = SerializableRequest::from_request(request.clone()).await {
             self.filter_chain.filter_request(&mut filtered_request);
 
-            cassette.interactions.iter().enumerate().find(|(index, interaction)| {
-                !used_interactions.contains(index) && 
-                self.matcher.matches_serializable(&filtered_request, &interaction.request)
-            })
+            cassette
+                .interactions
+                .iter()
+                .enumerate()
+                .find(|(index, interaction)| {
+                    !used_interactions.contains(index)
+                        && self
+                            .matcher
+                            .matches_serializable(&filtered_request, &interaction.request)
+                })
         } else {
             // Fallback to matching against stored interactions directly
             cassette
@@ -262,8 +268,8 @@ impl VcrClient {
                 .iter()
                 .enumerate()
                 .find(|(index, interaction)| {
-                    !used_interactions.contains(index) && 
-                    self.matcher.matches(request, &interaction.request)
+                    !used_interactions.contains(index)
+                        && self.matcher.matches(request, &interaction.request)
                 })
         }
     }
@@ -451,7 +457,7 @@ impl VcrClient {
             let mut used_interactions = self.used_interactions.lock().await;
             used_interactions.insert(index);
             drop(used_interactions); // Release used_interactions lock
-            
+
             // Re-acquire cassette lock to access the interaction
             let cassette = self.cassette.lock().await;
             let interaction = &cassette.interactions[index];
@@ -480,7 +486,7 @@ impl VcrClient {
             let mut used_interactions = self.used_interactions.lock().await;
             used_interactions.insert(index);
             drop(used_interactions); // Release used_interactions lock
-            
+
             // Re-acquire cassette lock to access the interaction
             let cassette = self.cassette.lock().await;
             let interaction = &cassette.interactions[index];
@@ -510,7 +516,7 @@ impl VcrClient {
             let mut used_interactions = self.used_interactions.lock().await;
             used_interactions.insert(index);
             drop(used_interactions); // Release used_interactions lock
-            
+
             // Re-acquire cassette lock to access the interaction
             let cassette = self.cassette.lock().await;
             let interaction = &cassette.interactions[index];

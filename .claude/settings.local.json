@@ -25,7 +25,13 @@
       "Bash(./target/debug/vcr-inspect:*)",
       "Bash(VCR_RECORD=1 cargo test test_multiple_requests_directory_format test_repeated_requests_directory_format test_json_and_text_responses_directory_format -- --nocapture)",
       "Bash(VCR_RECORD=1 cargo test test_repeated_requests_directory_format -- --nocapture)",
-      "Bash(VCR_RECORD=1 cargo test test_json_and_text_responses_directory_format -- --nocapture)"
+      "Bash(VCR_RECORD=1 cargo test test_json_and_text_responses_directory_format -- --nocapture)",
+      "Bash(VCR_RECORD=1 cargo test test_sequential_identical_requests_directory_format -- --nocapture)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(sed:*)",
+      "Bash(VCR_RECORD=1 cargo test test_partial_replay_restart_edge_case)",
+      "Bash(VCR_RECORD=1 cargo test --test directory_vcr_tests test_partial_replay_restart_edge_case)"
     ],
     "deny": []
   }
