@@ -1,0 +1,13 @@
+{
+  "args": {
+    "test": "1"
+  }, 
+  "headers": {
+    "Accept": "*/*", 
+    "Content-Type": "application/octet-stream", 
+    "Host": "httpbin.org", 
+    "X-Amzn-Trace-Id": "Root=1-68926a8c-562b656a119b29350d9afd9c"
+  }, 
+  "origin": "67.173.240.41", 
+  "url": "https://httpbin.org/get?test=1"
+}

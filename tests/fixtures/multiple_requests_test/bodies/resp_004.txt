@@ -1,0 +1,16 @@
+{
+  "args": {}, 
+  "data": "test body for PUT request", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Content-Length": "25", 
+    "Content-Type": "text/plain;charset=utf-8", 
+    "Host": "httpbin.org", 
+    "X-Amzn-Trace-Id": "Root=1-68926a8e-43a0529262bbb22e79a87a2c"
+  }, 
+  "json": null, 
+  "origin": "67.173.240.41", 
+  "url": "https://httpbin.org/put"
+}

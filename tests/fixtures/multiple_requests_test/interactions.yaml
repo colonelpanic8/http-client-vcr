@@ -1,0 +1,106 @@
+- request:
+    method: GET
+    url: https://httpbin.org/get?test=1
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-origin:
+      - '*'
+      date:
+      - Tue, 05 Aug 2025 20:33:16 GMT
+      server:
+      - gunicorn/19.9.0
+      connection:
+      - keep-alive
+      content-length:
+      - '296'
+      content-type:
+      - application/json
+    body_file: resp_001.txt
+    version: None
+- request:
+    method: GET
+    url: https://httpbin.org/get?test=2
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      date:
+      - Tue, 05 Aug 2025 20:33:18 GMT
+      connection:
+      - keep-alive
+      access-control-allow-origin:
+      - '*'
+      server:
+      - gunicorn/19.9.0
+      access-control-allow-credentials:
+      - 'true'
+      content-length:
+      - '296'
+      content-type:
+      - application/json
+    body_file: resp_002.txt
+    version: None
+- request:
+    method: POST
+    url: https://httpbin.org/post
+    headers:
+      content-type:
+      - text/plain;charset=utf-8
+    body_file: req_003.txt
+    version: None
+  response:
+    status: 200
+    headers:
+      content-length:
+      - '389'
+      access-control-allow-credentials:
+      - 'true'
+      connection:
+      - keep-alive
+      content-type:
+      - application/json
+      date:
+      - Tue, 05 Aug 2025 20:33:18 GMT
+      server:
+      - gunicorn/19.9.0
+      access-control-allow-origin:
+      - '*'
+    body_file: resp_003.txt
+    version: None
+- request:
+    method: PUT
+    url: https://httpbin.org/put
+    headers:
+      content-type:
+      - text/plain;charset=utf-8
+    body_file: req_004.txt
+    version: None
+  response:
+    status: 200
+    headers:
+      date:
+      - Tue, 05 Aug 2025 20:33:23 GMT
+      connection:
+      - keep-alive
+      server:
+      - gunicorn/19.9.0
+      access-control-allow-origin:
+      - '*'
+      content-type:
+      - application/json
+      access-control-allow-credentials:
+      - 'true'
+      content-length:
+      - '387'
+    body_file: resp_004.txt
+    version: None

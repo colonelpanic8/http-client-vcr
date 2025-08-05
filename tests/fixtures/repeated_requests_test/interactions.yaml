@@ -1,0 +1,78 @@
+- request:
+    method: GET
+    url: https://httpbin.org/json
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      access-control-allow-origin:
+      - '*'
+      date:
+      - Tue, 05 Aug 2025 20:33:30 GMT
+      content-length:
+      - '429'
+      server:
+      - gunicorn/19.9.0
+      content-type:
+      - application/json
+      access-control-allow-credentials:
+      - 'true'
+      connection:
+      - keep-alive
+    body_file: resp_001.txt
+    version: None
+- request:
+    method: GET
+    url: https://httpbin.org/json
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      access-control-allow-credentials:
+      - 'true'
+      date:
+      - Tue, 05 Aug 2025 20:33:31 GMT
+      server:
+      - gunicorn/19.9.0
+      content-length:
+      - '429'
+      content-type:
+      - application/json
+      access-control-allow-origin:
+      - '*'
+      connection:
+      - keep-alive
+    body_file: resp_002.txt
+    version: None
+- request:
+    method: GET
+    url: https://httpbin.org/json
+    headers:
+      content-type:
+      - application/octet-stream
+    version: None
+  response:
+    status: 200
+    headers:
+      date:
+      - Tue, 05 Aug 2025 20:33:34 GMT
+      server:
+      - gunicorn/19.9.0
+      content-length:
+      - '429'
+      access-control-allow-origin:
+      - '*'
+      connection:
+      - keep-alive
+      access-control-allow-credentials:
+      - 'true'
+      content-type:
+      - application/json
+    body_file: resp_003.txt
+    version: None

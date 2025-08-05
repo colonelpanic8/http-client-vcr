@@ -1,0 +1,16 @@
+{
+  "args": {}, 
+  "data": "test body for POST request", 
+  "files": {}, 
+  "form": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Content-Length": "26", 
+    "Content-Type": "text/plain;charset=utf-8", 
+    "Host": "httpbin.org", 
+    "X-Amzn-Trace-Id": "Root=1-68926a8e-162b94b229cc7f91036672de"
+  }, 
+  "json": null, 
+  "origin": "67.173.240.41", 
+  "url": "https://httpbin.org/post"
+}

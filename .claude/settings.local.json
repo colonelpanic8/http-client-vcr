@@ -8,7 +8,24 @@
       "Bash(tokei:*)",
       "Bash(rustc:*)",
       "Bash(./test_record_replacement)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(find:*)",
+      "Bash(mkdir:*)",
+      "Bash(direnv exec . cargo test:*)",
+      "Bash(direnv exec . VCR_RECORD=1 cargo test test_multiple_requests_directory_format)",
+      "Bash(VCR_RECORD=1 cargo test test_multiple_requests_directory_format)",
+      "Bash(ls:*)",
+      "Bash(VCR_RECORD=1 cargo test test_repeated_requests_directory_format)",
+      "Bash(VCR_RECORD=1 cargo test test_json_and_text_responses_directory_format)",
+      "Bash(VCR_RECORD=1 cargo test test_multiple_requests_directory_format -- --nocapture)",
+      "Bash(RUST_LOG=debug VCR_RECORD=1 cargo test test_multiple_requests_directory_format)",
+      "Bash(tree:*)",
+      "Bash(./target/debug/vcr-inspect list:*)",
+      "Bash(./target/debug/vcr-inspect field tests/fixtures/multiple_requests_test request.method)",
+      "Bash(./target/debug/vcr-inspect:*)",
+      "Bash(VCR_RECORD=1 cargo test test_multiple_requests_directory_format test_repeated_requests_directory_format test_json_and_text_responses_directory_format -- --nocapture)",
+      "Bash(VCR_RECORD=1 cargo test test_repeated_requests_directory_format -- --nocapture)",
+      "Bash(VCR_RECORD=1 cargo test test_json_and_text_responses_directory_format -- --nocapture)"
     ],
     "deny": []
   }

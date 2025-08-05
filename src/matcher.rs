@@ -132,7 +132,7 @@ impl RequestMatcher for DefaultMatcher {
                         log::debug!("Header '{header_name}' both absent (matched)");
                     }
                     _ => {
-                        log::debug!("Header '{}' presence mismatch: request present={}, recorded present={}", 
+                        log::debug!("Header '{}' presence mismatch: request present={}, recorded present={}",
                                    header_name, request_header.is_some(), recorded_header.is_some());
                         return false;
                     }

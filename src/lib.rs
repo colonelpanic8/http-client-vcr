@@ -12,7 +12,7 @@ mod noop_client;
 mod serializable;
 mod utils;
 
-pub use cassette::{Cassette, Interaction};
+pub use cassette::{Cassette, CassetteFormat, Interaction};
 pub use filter::{
     BodyFilter, CustomFilter, Filter, FilterChain, HeaderFilter, SmartFormFilter, UrlFilter,
 };
@@ -80,6 +80,124 @@ impl VcrClient {
         }
     }
 
+    /// Synchronous version of directory save for use in Drop
+    fn save_cassette_as_directory_sync(
+        cassette: &Cassette,
+        path: &PathBuf,
+    ) -> Result<(), std::io::Error> {
+        use serde::Serialize;
+
+        // Create the cassette directory and bodies subdirectory
+        std::fs::create_dir_all(path)?;
+        let bodies_dir = path.join("bodies");
+        std::fs::create_dir_all(&bodies_dir)?;
+
+        // Create directory format structures for serialization
+        #[derive(Serialize)]
+        struct DirectoryInteraction {
+            request: DirectorySerializableRequest,
+            response: DirectorySerializableResponse,
+        }
+
+        #[derive(Serialize)]
+        struct DirectorySerializableRequest {
+            method: String,
+            url: String,
+            headers: std::collections::HashMap<String, Vec<String>>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            body_file: Option<String>,
+            version: String,
+        }
+
+        #[derive(Serialize)]
+        struct DirectorySerializableResponse {
+            status: u16,
+            headers: std::collections::HashMap<String, Vec<String>>,
+            #[serde(skip_serializing_if = "Option::is_none")]
+            body_file: Option<String>,
+            version: String,
+        }
+
+        let mut dir_interactions = Vec::new();
+
+        for (i, interaction) in cassette.interactions.iter().enumerate() {
+            let interaction_num = format!("{:03}", i + 1);
+
+            // Handle request body
+            let request_body_file = if let Some(ref body) = interaction.request.body {
+                if !body.is_empty() {
+                    let filename = format!("req_{interaction_num}.txt");
+                    let body_path = bodies_dir.join(&filename);
+                    std::fs::write(&body_path, body)?;
+                    Some(filename)
+                } else {
+                    None
+                }
+            } else if let Some(ref body_base64) = interaction.request.body_base64 {
+                if !body_base64.is_empty() {
+                    let filename = format!("req_{interaction_num}.b64");
+                    let body_path = bodies_dir.join(&filename);
+                    std::fs::write(&body_path, body_base64)?;
+                    Some(filename)
+                } else {
+                    None
+                }
+            } else {
+                None
+            };
+
+            // Handle response body
+            let response_body_file = if let Some(ref body) = interaction.response.body {
+                if !body.is_empty() {
+                    let filename = format!("resp_{interaction_num}.txt");
+                    let body_path = bodies_dir.join(&filename);
+                    std::fs::write(&body_path, body)?;
+                    Some(filename)
+                } else {
+                    None
+                }
+            } else if let Some(ref body_base64) = interaction.response.body_base64 {
+                if !body_base64.is_empty() {
+                    let filename = format!("resp_{interaction_num}.b64");
+                    let body_path = bodies_dir.join(&filename);
+                    std::fs::write(&body_path, body_base64)?;
+                    Some(filename)
+                } else {
+                    None
+                }
+            } else {
+                None
+            };
+
+            let dir_interaction = DirectoryInteraction {
+                request: DirectorySerializableRequest {
+                    method: interaction.request.method.clone(),
+                    url: interaction.request.url.clone(),
+                    headers: interaction.request.headers.clone(),
+                    body_file: request_body_file,
+                    version: interaction.request.version.clone(),
+                },
+                response: DirectorySerializableResponse {
+                    status: interaction.response.status,
+                    headers: interaction.response.headers.clone(),
+                    body_file: response_body_file,
+                    version: interaction.response.version.clone(),
+                },
+            };
+
+            dir_interactions.push(dir_interaction);
+        }
+
+        // Write the interactions.yaml file
+        let interactions_yaml = serde_yaml::to_string(&dir_interactions)
+            .map_err(|e| std::io::Error::other(format!("Failed to serialize interactions: {e}")))?;
+
+        let interactions_file = path.join("interactions.yaml");
+        std::fs::write(&interactions_file, interactions_yaml)?;
+
+        Ok(())
+    }
+
     /// Create a pristine response from extracted data, completely independent of VCR processing
     fn create_pristine_response(
         status: http_types::StatusCode,
@@ -139,6 +257,76 @@ impl VcrClient {
                 .iter()
                 .find(|interaction| self.matcher.matches(request, &interaction.request))
         }
+    }
+
+    /// Find similar URLs using Levenshtein distance when exact match fails
+    async fn find_similar_urls(
+        &self,
+        request: &Request,
+        cassette: &Cassette,
+    ) -> Vec<(String, usize)> {
+        let request_url = request.url().to_string();
+        let mut similarities = Vec::new();
+
+        for interaction in &cassette.interactions {
+            let recorded_url = &interaction.request.url;
+            let distance = levenshtein::levenshtein(&request_url, recorded_url);
+            similarities.push((recorded_url.clone(), distance));
+        }
+
+        // Sort by distance (smaller distance = more similar)
+        similarities.sort_by_key(|(_, distance)| *distance);
+
+        // Return only the top 5 most similar URLs
+        similarities.into_iter().take(5).collect()
+    }
+
+    /// Generate enhanced error message with URL similarity information
+    async fn generate_no_match_error(&self, request: &Request, mode_description: &str) -> Error {
+        let cassette = self.cassette.lock().await;
+        let request_url = request.url().to_string();
+        let request_method = request.method().to_string();
+
+        let error_msg = {
+            let mut msg = format!(
+                "No matching interaction found in cassette ({mode_description})\n\nRequest details:\n  Method: {request_method}\n  URL: {request_url}"
+            );
+
+            if cassette.interactions.is_empty() {
+                msg.push_str("\n\nCassette is empty - no recorded interactions available.");
+            } else {
+                msg.push_str(&format!(
+                    "\n\nCassette contains {} recorded interactions.",
+                    cassette.interactions.len()
+                ));
+
+                // Find similar URLs
+                let similar_urls = self.find_similar_urls(request, &cassette).await;
+
+                if !similar_urls.is_empty() {
+                    msg.push_str("\n\nMost similar recorded URLs (by Levenshtein distance):");
+                    for (i, (url, distance)) in similar_urls.iter().enumerate() {
+                        msg.push_str(&format!("\n  {}. {} (distance: {})", i + 1, url, distance));
+                    }
+                }
+
+                // Show unique methods in cassette
+                let mut methods: Vec<String> = cassette
+                    .interactions
+                    .iter()
+                    .map(|i| i.request.method.clone())
+                    .collect();
+                methods.sort();
+                methods.dedup();
+
+                msg.push_str(&format!("\n\nRecorded methods: {}", methods.join(", ")));
+            }
+
+            msg
+        };
+
+        // Convert to a static string by leaking memory (acceptable for error cases)
+        Error::from_str(404, Box::leak(error_msg.into_boxed_str()))
     }
 
     pub async fn save_cassette(&self) -> Result<(), Error> {
@@ -251,10 +439,8 @@ impl VcrClient {
         if let Some(interaction) = self.find_match(&req, &cassette).await {
             Ok(interaction.response.to_response().await)
         } else {
-            Err(Error::from_str(
-                404,
-                "No matching interaction found in cassette",
-            ))
+            drop(cassette); // Release the lock before calling generate_no_match_error
+            Err(self.generate_no_match_error(&req, "Replay mode").await)
         }
     }
 
@@ -275,10 +461,8 @@ impl VcrClient {
         }
 
         if !cassette.is_empty() {
-            return Err(Error::from_str(
-                404,
-                "No matching interaction found in cassette (Once mode)",
-            ));
+            drop(cassette); // Release the lock before calling generate_no_match_error
+            return Err(self.generate_no_match_error(&req, "Once mode").await);
         }
         drop(cassette); // Release the lock before making the request
 
@@ -297,10 +481,10 @@ impl VcrClient {
             // Return the filtered response (filters are already applied when loading)
             Ok(interaction.response.to_response().await)
         } else {
-            Err(Error::from_str(
-                404,
-                "No matching interaction found in cassette (Filter mode - no new requests allowed)",
-            ))
+            drop(cassette); // Release the lock before calling generate_no_match_error
+            Err(self
+                .generate_no_match_error(&req, "Filter mode - no new requests allowed")
+                .await)
         }
     }
 }
@@ -315,6 +499,7 @@ pub struct VcrClientBuilder {
     cassette_path: PathBuf,
     matcher: Option<Box<dyn RequestMatcher>>,
     filter_chain: FilterChain,
+    format: Option<CassetteFormat>,
 }
 
 impl VcrClientBuilder {
@@ -325,6 +510,7 @@ impl VcrClientBuilder {
             cassette_path: cassette_path.into(),
             matcher: None,
             filter_chain: FilterChain::new(),
+            format: None,
         }
     }
 
@@ -353,6 +539,11 @@ impl VcrClientBuilder {
         self
     }
 
+    pub fn format(mut self, format: CassetteFormat) -> Self {
+        self.format = Some(format);
+        self
+    }
+
     pub async fn build(self) -> Result<VcrClient, Error> {
         let inner = self
             .inner
@@ -361,7 +552,11 @@ impl VcrClientBuilder {
         let cassette = if self.cassette_path.exists() {
             Cassette::load_from_file(self.cassette_path.clone()).await?
         } else {
-            Cassette::new().with_path(self.cassette_path)
+            let mut cassette = Cassette::new().with_path(self.cassette_path);
+            if let Some(format) = self.format {
+                cassette = cassette.with_format(format);
+            }
+            cassette
         };
 
         let mut vcr_client = VcrClient::new(inner, self.mode, cassette);
@@ -390,14 +585,27 @@ impl Drop for VcrClient {
                     "VcrClient dropped - saving modified cassette with {} interactions",
                     cassette.interactions.len()
                 );
-                // Try to save synchronously if possible
+                // Save respecting the format setting
                 if let Some(path) = &cassette.path {
-                    if let Ok(yaml) = serde_yaml::to_string(&*cassette) {
-                        if let Err(e) = std::fs::write(path, yaml) {
-                            eprintln!("Failed to save cassette on drop: {e}");
-                        } else {
-                            log::debug!("Successfully saved cassette to {path:?}");
+                    let result = match cassette.format {
+                        CassetteFormat::File => {
+                            // Save as single YAML file
+                            if let Ok(yaml) = serde_yaml::to_string(&*cassette) {
+                                std::fs::write(path, yaml)
+                            } else {
+                                Err(std::io::Error::other("Failed to serialize cassette"))
+                            }
                         }
+                        CassetteFormat::Directory => {
+                            // Save as directory format (synchronous version)
+                            Self::save_cassette_as_directory_sync(&cassette, path)
+                        }
+                    };
+
+                    if let Err(e) = result {
+                        eprintln!("Failed to save cassette on drop: {e}");
+                    } else {
+                        log::debug!("Successfully saved cassette to {path:?}");
                     }
                 }
             } else if cassette.modified_since_load {
